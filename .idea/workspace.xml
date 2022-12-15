@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/src/indexer/WordIndexerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Build out word count indexing lab as a starting point">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/DictionaryUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/indexer/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +43,19 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="ie.atu.sw.services.Main" />
       <module name="wordIndexer" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -68,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670969214343</updated>
-      <workItem from="1670969215501" duration="6223000" />
+      <workItem from="1670969215501" duration="9880000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -77,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670969253242</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Build out word count indexing lab as a starting point">
+      <created>1671022235364</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671022235364</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,7 +111,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Build out word count indexing lab as a starting point" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build out word count indexing lab as a starting point" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
