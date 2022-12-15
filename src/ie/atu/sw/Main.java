@@ -11,5 +11,8 @@ public class Main {
         WordIndexerService wordIndexerService = new WordIndexerService();
         // Index the files in the directory
         wordIndexerService.indexFile("./testInput.txt", "output.txt");
+
+        Menu m = new Menu();
+        m.start();
     }
 }
