@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add page number calculator and correctly append to index">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add README layout/placeholder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +41,17 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/jamesmcgauran/Developer/wordIndexer/src/ie/atu/sw",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ie/atu/sw" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -67,7 +70,7 @@
       <option name="VM_PARAMETERS" value="--enable-preview" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ie.atu.sw.*" />
+          <option name="PATTERN" value="ie.atu.sw.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670969214343</updated>
-      <workItem from="1670969215501" duration="15009000" />
+      <workItem from="1670969215501" duration="19326000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -124,7 +127,35 @@
       <option name="project" value="LOCAL" />
       <updated>1671128825265</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add virtual thread parser for dictionary csv file + intellij config for same">
+      <created>1671134292862</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671134292862</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add virtual thread parser for dictionary csv file + intellij config for same">
+      <created>1671134309128</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671134309128</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Set up menu skeleton and loading">
+      <created>1671142639550</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671142639550</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add README layout/placeholder">
+      <created>1671142800747</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671142800747</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +178,11 @@
     <MESSAGE value="Build out word count indexing lab as a starting point" />
     <MESSAGE value="Add basic dictionary filter for most common words" />
     <MESSAGE value="Add page number calculator and correctly append to index" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add page number calculator and correctly append to index" />
+    <MESSAGE value="Add virtual thread parser for dictionary csv file" />
+    <MESSAGE value="Add virtual thread parser for dictionary csv file + intellij config for same" />
+    <MESSAGE value="Set up menu skeleton and loading" />
+    <MESSAGE value="Add README layout/placeholder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add README layout/placeholder" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

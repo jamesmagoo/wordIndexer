@@ -2,6 +2,11 @@ package ie.atu.sw;
 
 import ie.atu.sw.services.WordIndexerService;
 
+/**
+ * @author James McGauran
+ * @version 0.01
+ *
+ */
 public class Main {
     public static void main(String[] args) throws Exception {
 
@@ -12,7 +17,7 @@ public class Main {
         // Index the files in the directory
         wordIndexerService.indexFile("./testInput.txt", "output.txt");
 
-        Menu m = new Menu();
-        m.start();
+//        Menu m = new Menu();
+//        m.start();
     }
 }

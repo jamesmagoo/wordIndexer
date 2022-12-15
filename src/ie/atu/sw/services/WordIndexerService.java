@@ -21,7 +21,7 @@ public class WordIndexerService {
     public WordIndexerService() throws Exception {
         this.dictionaryUtils = new DictionaryUtils();
         dictionaryUtils.loadForbiddenWords("./google-1000.txt");
-        dictionaryUtils.loadDict("./smallDict.csv");
+        dictionaryUtils.loadDictionary("./smallDict.csv");
     }
 
     public void indexFile(String filePath, String outputFilePath) throws Exception {
@@ -64,8 +64,13 @@ public class WordIndexerService {
     }
 
 
+    /**
+     * Strips line of whitespaces & annotations before adding index
+     *
+     * @param line
+     * @throws Exception
+     */
     private void processLine(String line) throws Exception {
-        // split line into words
         lineNumber++;
         System.out.println("Processing line: " + lineNumber);
         String regex = "\s"; // split on whitespace
@@ -94,8 +99,14 @@ public class WordIndexerService {
         int page = calculatePageNumber(lineNumber);
         pageNumbersList.add(page);
         wordIndex.put(word, pageNumbersList);
+        // TODO call out ot dictionary service to match word with definition and make new WordDetail object ?
     }
 
+    /**
+     * Calculates page number for index. A page is assumed to be ~40 lines
+     * @param lineNumber
+     * @return pageNumber
+     */
     private int calculatePageNumber(int lineNumber) {
         // as per spec a page is ~40 lines
         double pageNumber = (double) lineNumber / 40;
