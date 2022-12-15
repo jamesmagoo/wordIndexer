@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add basic dictionary filter for most common words">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add page number calculator and correctly append to index">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/DictionaryUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/utils/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -51,7 +53,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ie.atu.sw.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ie.atu.sw.services.Main" />
       <module name="wordIndexer" />
@@ -59,8 +61,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ie.atu.sw.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ie.atu.sw.Main" />
+      <module name="wordIndexer" />
+      <option name="VM_PARAMETERS" value="--enable-preview" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ie.atu.sw.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ie.atu.sw.Main" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ie.atu.sw.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -73,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670969214343</updated>
-      <workItem from="1670969215501" duration="11333000" />
+      <workItem from="1670969215501" duration="15009000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -96,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671127340354</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add page number calculator and correctly append to index">
+      <created>1671128825265</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671128825265</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +146,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Build out word count indexing lab as a starting point" />
     <MESSAGE value="Add basic dictionary filter for most common words" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add basic dictionary filter for most common words" />
+    <MESSAGE value="Add page number calculator and correctly append to index" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add page number calculator and correctly append to index" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,6 +1,6 @@
 package ie.atu.sw.services;
 
-import ie.atu.sw.services.utils.DictionaryUtils;
+import ie.atu.sw.utils.DictionaryUtils;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -14,14 +14,14 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public class WordIndexerService {
 
     Map<String, List<Integer>> wordIndex = new ConcurrentSkipListMap<>();
-    private int count = 0;
     private int lineNumber;
 
     DictionaryUtils dictionaryUtils;
 
     public WordIndexerService() throws Exception {
         this.dictionaryUtils = new DictionaryUtils();
-        dictionaryUtils.loadForbiddenWords("./dict.txt");
+        dictionaryUtils.loadForbiddenWords("./google-1000.txt");
+        dictionaryUtils.loadDict("./smallDict.csv");
     }
 
     public void indexFile(String filePath, String outputFilePath) throws Exception {
@@ -52,16 +52,16 @@ public class WordIndexerService {
         }
     }
 
-//    public void parse2(String file) throws Exception {
-//        Files.lines(Path.of(file))
-//                .forEach(test -> Thread.startVirtualThread(() -> {
-//                    try {
-//                        processLine(test);
-//                    } catch (Exception e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }));
-//    }
+    public void parse2(String file) throws Exception {
+        Files.lines(Path.of(file))
+                .forEach(test -> Thread.startVirtualThread(() -> {
+                    try {
+                        System.out.println("Parsing file on virtual thread: " + file);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }));
+    }
 
 
     private void processLine(String line) throws Exception {
@@ -75,36 +75,29 @@ public class WordIndexerService {
             // Clean up word removing non-alphabetic characters
             String regex2 = "[^a-zA-Z]";
             String wordStripped = word.replaceAll(regex2, "");
-            // Add word to index
-            addWordToIndex(wordStripped);
+            addWordToIndex(wordStripped.toLowerCase());
         }
     }
 
     private void addWordToIndex(String word) throws Exception {
-        // TODO: this should be a list of pages..
-        List<Integer> pagesNumbersList;
-        List<Integer> wordList;
-        // TODO check if the word is in the forbidden set
+        List<Integer> pageNumbersList;
         if(dictionaryUtils.getForbiddenWords().contains(word)){
             return;
         }
         if (wordIndex.containsKey(word)) {
             // word already in index get the list already made
-            wordList = wordIndex.get(word);
+            pageNumbersList = wordIndex.get(word);
         } else {
-            // word not in index, make list and add word
-            wordList = new ArrayList<>();
+            // word not in index, make list
+            pageNumbersList = new ArrayList<>();
         }
         int page = calculatePageNumber(lineNumber);
-        wordList.add(page);
-        wordIndex.put(word, wordList);
-        count++;
+        pageNumbersList.add(page);
+        wordIndex.put(word, pageNumbersList);
     }
 
     private int calculatePageNumber(int lineNumber) {
         // as per spec a page is ~40 lines
-        // so we can calculate the page number by dividing the line number by 40
-        // and rounding up
         double pageNumber = (double) lineNumber / 40;
         return (int) Math.ceil(pageNumber);
     }

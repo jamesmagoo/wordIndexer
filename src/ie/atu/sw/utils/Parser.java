@@ -1,4 +1,4 @@
-package ie.atu.sw.services.utils;
+package ie.atu.sw.utils;
 
 public class Parser {
 

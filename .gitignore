@@ -30,3 +30,4 @@ bin/
 
 ### Ignore .txt files during testing ###
 *.txt
+*.csv
