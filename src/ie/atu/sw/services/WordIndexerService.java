@@ -15,12 +15,13 @@ public class WordIndexerService {
 
     Map<String, List<Integer>> wordIndex = new ConcurrentSkipListMap<>();
     private int count = 0;
+    private int lineNumber;
 
     DictionaryUtils dictionaryUtils;
 
     public WordIndexerService() throws Exception {
         this.dictionaryUtils = new DictionaryUtils();
-        dictionaryUtils.loadDictionary("./dict.txt");
+        dictionaryUtils.loadForbiddenWords("./dict.txt");
     }
 
     public void indexFile(String filePath, String outputFilePath) throws Exception {
@@ -65,6 +66,8 @@ public class WordIndexerService {
 
     private void processLine(String line) throws Exception {
         // split line into words
+        lineNumber++;
+        System.out.println("Processing line: " + lineNumber);
         String regex = "\s"; // split on whitespace
         String[] words = line.split(regex);
 
@@ -92,16 +95,18 @@ public class WordIndexerService {
             // word not in index, make list and add word
             wordList = new ArrayList<>();
         }
-        wordList.add(count);
+        int page = calculatePageNumber(lineNumber);
+        wordList.add(page);
         wordIndex.put(word, wordList);
         count++;
     }
 
-    private void calculatePageNumber(){
+    private int calculatePageNumber(int lineNumber) {
         // as per spec a page is ~40 lines
         // so we can calculate the page number by dividing the line number by 40
         // and rounding up
-
+        double pageNumber = (double) lineNumber / 40;
+        return (int) Math.ceil(pageNumber);
     }
 
     private void writeIndexToFile(String out) throws Exception {

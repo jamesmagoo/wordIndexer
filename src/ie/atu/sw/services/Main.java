@@ -11,6 +11,6 @@ public class Main {
         // Create a WordIndexerService
         WordIndexerService wordIndexerService = new WordIndexerService();
         // Index the files in the directory
-        wordIndexerService.indexFile("./testInput.txt", "output.txt");
+        wordIndexerService.indexFile("./1984_orwell.txt", "output.txt");
     }
 }

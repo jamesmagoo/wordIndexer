@@ -12,10 +12,11 @@ public class DictionaryUtils {
     }
 
     // Method to load dictionary file into a set
-    public void loadDictionary(String filePath) throws Exception {
+    public void loadForbiddenWords(String filePath) throws Exception {
         parseFile(filePath);
     }
 
+    // TODO : figure out how to abstract out this parsign function, it is used in numerous place
     private void parseFile(String file) throws Exception {
         System.out.println("Parsing file: " + file);
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
