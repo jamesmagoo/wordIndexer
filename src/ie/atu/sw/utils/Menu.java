@@ -1,4 +1,4 @@
-package ie.atu.sw;
+package ie.atu.sw.utils;
 
 import ie.atu.sw.utils.ConsoleColour;
 
@@ -16,7 +16,7 @@ public class Menu {
 	// Initialize Parser object
 	//Parser p = new Parser();
 
-	// Start ie.atu.sw.Menu & Process User Choice
+	// Start ie.atu.sw.utils.Menu & Process User Choice
 	public void start() throws InterruptedException {
 		showOptions();
 		while (keepRunning) {

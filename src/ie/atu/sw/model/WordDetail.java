@@ -6,7 +6,9 @@ public class WordDetail {
     private String word;
     private String wordType;
     private String definition;
-    private List<Integer> pageIndex;
+
+    private DictionaryDetail dictionaryDetail;
+    private List<Integer> pageNumbersList;
 
     public String getWord() {
         return word;
@@ -32,11 +34,11 @@ public class WordDetail {
         this.definition = definition;
     }
 
-    public List<Integer> getPageIndex() {
-        return pageIndex;
+    public List<Integer> getPageNumbersList() {
+        return pageNumbersList;
     }
 
-    public void setPageIndex(List<Integer> pageIndex) {
-        this.pageIndex = pageIndex;
+    public void setPageNumbersList(List<Integer> pageNumbersList) {
+        this.pageNumbersList = pageNumbersList;
     }
 }

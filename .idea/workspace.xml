@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add README layout/placeholder">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add WordDetail model, javdoc comments">
+      <change afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/DictionaryDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" afterDir="false" />
     </list>
@@ -36,17 +39,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/jamesmcgauran/Developer/wordIndexer/src/ie/atu/sw",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jamesmcgauran/Developer/wordIndexer/src/ie/atu/sw&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ie/atu/sw" />
@@ -97,7 +100,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670969214343</updated>
-      <workItem from="1670969215501" duration="19326000" />
+      <workItem from="1670969215501" duration="21063000" />
+      <workItem from="1671193875323" duration="5882000" />
+      <workItem from="1671482266807" duration="28000" />
+      <workItem from="1671554441832" duration="4222000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -155,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671142800747</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add WordDetail model, javdoc comments">
+      <created>1671146762618</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671146762618</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +195,8 @@
     <MESSAGE value="Add virtual thread parser for dictionary csv file + intellij config for same" />
     <MESSAGE value="Set up menu skeleton and loading" />
     <MESSAGE value="Add README layout/placeholder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add README layout/placeholder" />
+    <MESSAGE value="Add WordDetail model, javdoc comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add WordDetail model, javdoc comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

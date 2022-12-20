@@ -1,5 +1,6 @@
 package ie.atu.sw.services;
 
+import ie.atu.sw.model.WordDetail;
 import ie.atu.sw.utils.DictionaryUtils;
 
 import java.io.*;
@@ -14,6 +15,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public class WordIndexerService {
 
     Map<String, List<Integer>> wordIndex = new ConcurrentSkipListMap<>();
+    Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
     private int lineNumber;
 
     DictionaryUtils dictionaryUtils;
@@ -28,15 +30,6 @@ public class WordIndexerService {
         parseFile(filePath);
         writeIndexToFile(outputFilePath);
     }
-
-//    private void parseBook(String book) throws Exception{ //Imperative
-//        try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(book)))){
-//            String text;
-//            while ((text = br.readLine()) != null) {
-//                process(text);
-//            }
-//        }
-//    }
 
     private void parseFile(String file) throws Exception {
         System.out.println("Parsing file: " + file);
@@ -89,16 +82,23 @@ public class WordIndexerService {
         if(dictionaryUtils.getForbiddenWords().contains(word)){
             return;
         }
-        if (wordIndex.containsKey(word)) {
-            // word already in index get the list already made
-            pageNumbersList = wordIndex.get(word);
+        WordDetail wordDetail;
+        if (wordDetailIndex.containsKey(word)) {
+            // word already in index get the wordDetail already made
+            wordDetail = wordDetailIndex.get(word);
+            pageNumbersList = wordDetail.getPageNumbersList();
+            int page = calculatePageNumber(lineNumber);
+            pageNumbersList.add(page);
         } else {
             // word not in index, make list
+            wordDetail = new WordDetail();
             pageNumbersList = new ArrayList<>();
+            int page = calculatePageNumber(lineNumber);
+            pageNumbersList.add(page);
         }
-        int page = calculatePageNumber(lineNumber);
-        pageNumbersList.add(page);
-        wordIndex.put(word, pageNumbersList);
+        wordDetail.setPageNumbersList(pageNumbersList);
+        wordDetailIndex.put(word, wordDetail);
+        dictionaryUtils.setDictionaryDefinition(word);
         // TODO call out ot dictionary service to match word with definition and make new WordDetail object ?
     }
 
@@ -115,10 +115,10 @@ public class WordIndexerService {
 
     private void writeIndexToFile(String out) throws Exception {
         try (FileWriter fw = new FileWriter(new File(out))) {
-            Map<String, List<Integer>> temp = new TreeMap<>(wordIndex); //O(n log n)
+            Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
 
-            for (Map.Entry<String, List<Integer>> entry : temp.entrySet()) { //O(n)
-                fw.write(entry.getKey() + "\t" + entry.getValue() + "\n");
+            for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
+                fw.write(entry.getKey() + "\t" + entry.getValue().getPageNumbersList() + "\n");
             }
         }
     }
