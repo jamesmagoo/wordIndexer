@@ -20,6 +20,10 @@ public class Main {
         // Index the files in the directory
         wordIndexerService.indexFile("./testInput.txt", "output.txt");
 
+//        String regex2 = "[^a-zA-Z]";
+//        String wordStripped = word.replaceAll(regex2, "");
+//        addWordToIndex(wordStripped.toLowerCase());
+
 //        Menu m = new Menu();
 //        m.start();
     }

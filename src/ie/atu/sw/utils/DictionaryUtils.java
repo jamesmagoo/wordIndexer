@@ -104,7 +104,7 @@ public class DictionaryUtils {
         if(dictionary.containsKey(word)){
             wordDetail.setDictionaryDetail(dictionary.get(word));
         } else {
-            wordDetail.setDictionaryDetail(new DictionaryDetail(Arrays.asList("Definition Not Found"), "Unknown"));
+            wordDetail.setDictionaryDetail(new DictionaryDetail(Arrays.asList("Definition Not Found"), "No Word Type Found"));
         }
     }
 

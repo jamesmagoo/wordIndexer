@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add dictionary definitions to output">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Fix for new csv dictionary format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/model/DictionaryDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/DictionaryDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" afterDir="false" />
     </list>
@@ -104,7 +103,7 @@
       <workItem from="1671554441832" duration="5776000" />
       <workItem from="1671886929768" duration="263000" />
       <workItem from="1671887207466" duration="153000" />
-      <workItem from="1671887382913" duration="7315000" />
+      <workItem from="1671887382913" duration="9548000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -183,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671889821622</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fix for new csv dictionary format">
+      <created>1671894854881</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671894854881</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +219,8 @@
     <MESSAGE value="Add WordDetail model, javdoc comments" />
     <MESSAGE value="Add DictionaryDetail model, refactor to use WordDetail index and begin parsing dict" />
     <MESSAGE value="Add dictionary definitions to output" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add dictionary definitions to output" />
+    <MESSAGE value="Fix for new csv dictionary format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix for new csv dictionary format" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

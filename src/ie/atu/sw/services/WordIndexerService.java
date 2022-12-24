@@ -14,7 +14,6 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 public class WordIndexerService {
 
-    Map<String, List<Integer>> wordIndex = new ConcurrentSkipListMap<>();
     Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
     private int lineNumber;
 
@@ -23,7 +22,7 @@ public class WordIndexerService {
     public WordIndexerService() throws Exception {
         this.dictionaryUtils = new DictionaryUtils();
         dictionaryUtils.loadForbiddenWords("./google-1000.txt");
-        dictionaryUtils.testloadDictionary("./smallDict.csv");
+        dictionaryUtils.loadDictionary("./dictionary.csv");
     }
 
     public void indexFile(String filePath, String outputFilePath) throws Exception {
@@ -72,7 +71,10 @@ public class WordIndexerService {
             // Clean up word removing non-alphabetic characters
             String regex2 = "[^a-zA-Z]";
             String wordStripped = word.replaceAll(regex2, "");
-            addWordToIndex(wordStripped.toLowerCase());
+            if (!wordStripped.isEmpty()) {
+                // Add the word to the index
+                addWordToIndex(wordStripped.toLowerCase());
+            }
         }
     }
 
@@ -114,9 +116,11 @@ public class WordIndexerService {
     private void writeIndexToFile(String out) throws Exception {
         try (FileWriter fw = new FileWriter(new File(out))) {
             Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
-
             for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
-                fw.write(entry.getKey() + "\n" + entry.getValue().getPageNumbersList() + "\n");
+                fw.write(entry.getKey().toUpperCase() + "\n"
+                        + entry.getValue().getPageNumbersList() + "\n"
+                        + entry.getValue().getDictionaryDetail().getWordType() + "\n");
+                // Print definitions list
                 List<String> defs = entry.getValue().getDictionaryDetail().getWordDefinitions();
                 for (String def: defs) {
                     fw.write(def + "\n");
