@@ -65,7 +65,6 @@ public class WordIndexerService {
      */
     private void processLine(String line) throws Exception {
         lineNumber++;
-        System.out.println("Processing line: " + lineNumber);
         String regex = "\s"; // split on whitespace
         String[] words = line.split(regex);
 
@@ -95,11 +94,10 @@ public class WordIndexerService {
             pageNumbersList = new ArrayList<>();
             int page = calculatePageNumber(lineNumber);
             pageNumbersList.add(page);
+            dictionaryUtils.setDictionaryDefinition(word, wordDetail);
         }
         wordDetail.setPageNumbersList(pageNumbersList);
         wordDetailIndex.put(word, wordDetail);
-        dictionaryUtils.setDictionaryDefinition(word);
-        // TODO call out ot dictionary service to match word with definition and make new WordDetail object ?
     }
 
     /**
@@ -118,7 +116,11 @@ public class WordIndexerService {
             Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
 
             for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
-                fw.write(entry.getKey() + "\t" + entry.getValue().getPageNumbersList() + "\n");
+                fw.write(entry.getKey()
+                        + "\n"
+                        + entry.getValue().getPageNumbersList()
+                        + "\n"
+                        + entry.getValue().getDictionaryDetail().getWordDefinition() +"\n---------------------------\n");
             }
         }
     }

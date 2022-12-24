@@ -1,6 +1,7 @@
 package ie.atu.sw.utils;
 
 import ie.atu.sw.model.DictionaryDetail;
+import ie.atu.sw.model.WordDetail;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -50,7 +51,6 @@ public class DictionaryUtils {
                 .forEach(line -> Thread.startVirtualThread(() -> {
                     try {
                         processDictionaryLine(line);
-                        //dictionary.add(line);
                         System.out.println("Parsing file on virtual thread: " + line);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
@@ -67,17 +67,21 @@ public class DictionaryUtils {
         String word = parts[0];
         String type = parts[1];
         String definition = parts[2];
+        DictionaryDetail dictionaryDetail = new DictionaryDetail(definition,type);
+        dictionary.put(word.toLowerCase(),dictionaryDetail);
         for (String part : parts
         ) {
-            System.out.println(part.trim());
+            System.out.println(part.trim().toLowerCase());
         }
     }
 
-    public void setDictionaryDefinition(String dictionaryLine){
+    public void setDictionaryDefinition(String word, WordDetail wordDetail){
         // take the word/
-        // check if it is in the key set of the dictionary map
-        // if yes append to WordDetail object
-        // otherwise append "Dictionary Definition not found
+        if(dictionary.containsKey(word)){
+            wordDetail.setDictionaryDetail(dictionary.get(word));
+        } else {
+            wordDetail.setDictionaryDetail(new DictionaryDetail("Definition not found", "Unknown"));
+        }
     }
 
     // TODO : figure out how to abstract out this parsing function, it is used in numerous place

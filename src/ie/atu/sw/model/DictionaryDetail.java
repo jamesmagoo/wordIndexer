@@ -4,6 +4,11 @@ public class DictionaryDetail {
     private String wordDefinition;
     private String wordType;
 
+    public DictionaryDetail(String wordDefinition, String wordType) {
+        this.wordDefinition = wordDefinition;
+        this.wordType = wordType;
+    }
+
     public String getWordDefinition() {
         return wordDefinition;
     }
