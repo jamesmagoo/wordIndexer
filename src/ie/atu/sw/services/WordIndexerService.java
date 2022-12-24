@@ -23,7 +23,7 @@ public class WordIndexerService {
     public WordIndexerService() throws Exception {
         this.dictionaryUtils = new DictionaryUtils();
         dictionaryUtils.loadForbiddenWords("./google-1000.txt");
-        dictionaryUtils.loadDictionary("./smallDict.csv");
+        dictionaryUtils.testloadDictionary("./smallDict.csv");
     }
 
     public void indexFile(String filePath, String outputFilePath) throws Exception {
@@ -116,11 +116,12 @@ public class WordIndexerService {
             Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
 
             for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
-                fw.write(entry.getKey()
-                        + "\n"
-                        + entry.getValue().getPageNumbersList()
-                        + "\n"
-                        + entry.getValue().getDictionaryDetail().getWordDefinition() +"\n---------------------------\n");
+                fw.write(entry.getKey() + "\n" + entry.getValue().getPageNumbersList() + "\n");
+                List<String> defs = entry.getValue().getDictionaryDetail().getWordDefinitions();
+                for (String def: defs) {
+                    fw.write(def + "\n");
+                }
+                fw.write("--------------------------------------------\n");
             }
         }
     }

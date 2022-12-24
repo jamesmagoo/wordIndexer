@@ -6,11 +6,9 @@ import ie.atu.sw.model.WordDetail;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.regex.Pattern;
 
 /**
  * Class for utilities related to word resources such as lists of words
@@ -51,28 +49,54 @@ public class DictionaryUtils {
                 .forEach(line -> Thread.startVirtualThread(() -> {
                     try {
                         processDictionaryLine(line);
-                        System.out.println("Parsing file on virtual thread: " + line);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 }));
     }
 
+    public void testloadDictionary(String filePath) throws Exception {
+        Files.lines(Path.of(filePath))
+                .forEach(line -> {
+                    try {
+                        processDictionaryLine(line);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+    }
+
     private void processDictionaryLine(String dictionaryLine) {
-        // take first part of line add to key map
-        // take second part add to word type value of map
-        // take third part add to definition value of map
-        // TODO check if there a part to avoid an ArrayOutOfBounds Exception i.e. some may not have a definition
-        String[] parts = dictionaryLine.split(Pattern.quote(","));
+
+        // Split the line on the semicolon character to get the individual definitions
+        String[] definitions = dictionaryLine.split(";");
+
+        // Split the first definition on the comma character to get the word and word type
+        String[] parts = definitions[0].split(",");
         String word = parts[0];
-        String type = parts[1];
-        String definition = parts[2];
-        DictionaryDetail dictionaryDetail = new DictionaryDetail(definition,type);
-        dictionary.put(word.toLowerCase(),dictionaryDetail);
-        for (String part : parts
-        ) {
-            System.out.println(part.trim().toLowerCase());
+        String wordDef = parts[1];
+        String[] splitAgain =  wordDef.split(":");
+        String wordType = splitAgain[0];
+        String firstDef = splitAgain[1];
+
+        // Print the word and word type
+        System.out.println(word.toUpperCase());
+        System.out.println(wordType);
+        System.out.println(firstDef);
+        List<String> defs = new ArrayList<>();
+        defs.add(firstDef.trim());
+
+        // Loop over the remaining definitions and add to list
+        for (int i = 1; i < definitions.length; i++) {
+            parts = definitions[i].split(";");
+            wordDef = parts[0];
+            System.out.println(wordDef);
+            defs.add(wordDef.trim());
         }
+        System.out.println("________________");
+        DictionaryDetail dictionaryDetail = new DictionaryDetail(defs, wordType);
+        dictionary.put(word.toLowerCase(), dictionaryDetail);
+
     }
 
     public void setDictionaryDefinition(String word, WordDetail wordDetail){
@@ -80,7 +104,7 @@ public class DictionaryUtils {
         if(dictionary.containsKey(word)){
             wordDetail.setDictionaryDetail(dictionary.get(word));
         } else {
-            wordDetail.setDictionaryDetail(new DictionaryDetail("Definition not found", "Unknown"));
+            wordDetail.setDictionaryDetail(new DictionaryDetail(Arrays.asList("Definition Not Found"), "Unknown"));
         }
     }
 
