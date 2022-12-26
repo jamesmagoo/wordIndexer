@@ -15,8 +15,10 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * to be omitted, and dictionary definitions of words.
  */
 public class DictionaryUtils {
-    private Set<String> forbiddenWords = new ConcurrentSkipListSet<>();
-    private Map<String, DictionaryDetail> dictionary = new ConcurrentSkipListMap<>();
+    private static Set<String> forbiddenWords = new ConcurrentSkipListSet<>();
+    private static Map<String, DictionaryDetail> dictionary = new ConcurrentSkipListMap<>();
+    private String dictionaryPath;
+    private String forbiddenWordsPath;
 
 
     /**
@@ -31,21 +33,34 @@ public class DictionaryUtils {
     /**
      * Loads a list of forbidden words from a provided file.
      *
-     * @param filePath
      * @throws Exception if the file cannot be found at the given path.
      */
-    public void loadForbiddenWords(String filePath) throws Exception {
-        parseFile(filePath);
+    public void loadForbiddenWords() throws Exception {
+        if(this.forbiddenWordsPath == null){
+            System.out.println("No forbidden words loaded");
+            return;
+        }
+        Files.lines(Path.of(forbiddenWordsPath))
+                .forEach(line -> Thread.startVirtualThread(() -> {
+                    try {
+                        forbiddenWords.add(line);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }));
     }
 
     /**
      * Loads dictionary file into Set
      *
-     * @param filePath
      * @throws Exception if the file cannot be found at the given path.
      */
-    public void loadDictionary(String filePath) throws Exception {
-        Files.lines(Path.of(filePath))
+    public void loadDictionary() throws Exception {
+        if(this.dictionaryPath == null){
+            System.out.println("No dictionary loaded");
+            return;
+        }
+        Files.lines(Path.of(dictionaryPath))
                 .forEach(line -> Thread.startVirtualThread(() -> {
                     try {
                         processDictionaryLine(line);
@@ -53,17 +68,6 @@ public class DictionaryUtils {
                         throw new RuntimeException(e);
                     }
                 }));
-    }
-
-    public void testloadDictionary(String filePath) throws Exception {
-        Files.lines(Path.of(filePath))
-                .forEach(line -> {
-                    try {
-                        processDictionaryLine(line);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
     }
 
     private void processDictionaryLine(String dictionaryLine) {
@@ -79,10 +83,7 @@ public class DictionaryUtils {
         String wordType = splitAgain[0];
         String firstDef = splitAgain[1];
 
-        // Print the word and word type
-        System.out.println(word.toUpperCase());
-        System.out.println(wordType);
-        System.out.println(firstDef);
+
         List<String> defs = new ArrayList<>();
         defs.add(firstDef.trim());
 
@@ -90,17 +91,13 @@ public class DictionaryUtils {
         for (int i = 1; i < definitions.length; i++) {
             parts = definitions[i].split(";");
             wordDef = parts[0];
-            System.out.println(wordDef);
             defs.add(wordDef.trim());
         }
-        System.out.println("________________");
         DictionaryDetail dictionaryDetail = new DictionaryDetail(defs, wordType);
         dictionary.put(word.toLowerCase(), dictionaryDetail);
-
     }
 
     public void setDictionaryDefinition(String word, WordDetail wordDetail){
-        // take the word/
         if(dictionary.containsKey(word)){
             wordDetail.setDictionaryDetail(dictionary.get(word));
         } else {
@@ -123,4 +120,19 @@ public class DictionaryUtils {
         }
     }
 
+    public void setDictionaryPath(String dictionaryPath) {
+        this.dictionaryPath = dictionaryPath;
+    }
+
+    public String getDictionaryPath() {
+        return dictionaryPath;
+    }
+
+    public void setForbiddenWordsPath(String forbiddenWordsPath) {
+        this.forbiddenWordsPath = forbiddenWordsPath;
+    }
+
+    public String getForbiddenWordsPath() {
+        return forbiddenWordsPath;
+    }
 }

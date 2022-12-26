@@ -16,23 +16,23 @@ public class WordIndexerService {
 
     Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
     private int lineNumber;
+    private String inputFilePath;
+    private String outputFilePath;
 
     DictionaryUtils dictionaryUtils;
 
     public WordIndexerService() throws Exception {
         this.dictionaryUtils = new DictionaryUtils();
-        dictionaryUtils.loadForbiddenWords("./google-1000.txt");
-        dictionaryUtils.loadDictionary("./dictionary.csv");
     }
 
-    public void indexFile(String filePath, String outputFilePath) throws Exception {
-        parseFile(filePath);
-        writeIndexToFile(outputFilePath);
+    public void indexFile() throws Exception {
+        parseFile();
+        writeIndexToFile();
     }
 
-    private void parseFile(String file) throws Exception {
-        System.out.println("Parsing file: " + file);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
+    private void parseFile() throws Exception {
+        if(inputFilePath == null) return;
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)))) {
             String line = null;
             while ((line = br.readLine()) != null) {
                 processLine(line);
@@ -72,12 +72,17 @@ public class WordIndexerService {
             String regex2 = "[^a-zA-Z]";
             String wordStripped = word.replaceAll(regex2, "");
             if (!wordStripped.isEmpty()) {
-                // Add the word to the index
                 addWordToIndex(wordStripped.toLowerCase());
             }
         }
     }
 
+    /**
+     * Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
+     * dictionary definition. If it does, adds to page index list.
+     * @param word
+     * @throws Exception
+     */
     private void addWordToIndex(String word) throws Exception {
         List<Integer> pageNumbersList;
         if(dictionaryUtils.getForbiddenWords().contains(word)){
@@ -113,12 +118,20 @@ public class WordIndexerService {
         return (int) Math.ceil(pageNumber);
     }
 
-    private void writeIndexToFile(String out) throws Exception {
-        try (FileWriter fw = new FileWriter(new File(out))) {
+
+    // TODO : use stringbuilder here
+
+    /**
+     * Writes the index to the output file
+     * @throws Exception
+     */
+    private void writeIndexToFile() throws Exception {
+        try (FileWriter fw = new FileWriter(new File(this.outputFilePath))) {
             Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
             for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
                 fw.write(entry.getKey().toUpperCase() + "\n"
-                        + entry.getValue().getPageNumbersList() + "\n"
+                        + "Page Index: "+ entry.getValue().getPageNumbersList() + "\n"
+                        + "Occurrence Count: "+ entry.getValue().getPageNumbersList().size() + "\n"
                         + entry.getValue().getDictionaryDetail().getWordType() + "\n");
                 // Print definitions list
                 List<String> defs = entry.getValue().getDictionaryDetail().getWordDefinitions();
@@ -127,7 +140,25 @@ public class WordIndexerService {
                 }
                 fw.write("--------------------------------------------\n");
             }
+        } catch (Exception e){
+            System.out.println("Caught " + e);
         }
+    }
+
+    public String getInputFilePath() {
+        return inputFilePath;
+    }
+
+    public void setInputFilePath(String inputFilePath) {
+        this.inputFilePath = inputFilePath;
+    }
+
+    public String getOutputFilePath() {
+        return outputFilePath;
+    }
+
+    public void setOutputFilePath(String outputFilePath) {
+        this.outputFilePath = outputFilePath;
     }
 
 }
