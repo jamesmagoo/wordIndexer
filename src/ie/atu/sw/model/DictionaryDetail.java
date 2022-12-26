@@ -2,6 +2,10 @@ package ie.atu.sw.model;
 
 import java.util.List;
 
+/**
+ * Object to store dictionary definitions for a given word, used in the
+ * dictionary Map.
+ */
 public class DictionaryDetail {
     private List<String> wordDefinitions;
     private String wordType;

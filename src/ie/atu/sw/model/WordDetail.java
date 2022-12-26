@@ -2,6 +2,10 @@ package ie.atu.sw.model;
 
 import java.util.List;
 
+/**
+ * Forms the value object for the word index map Map<String, WordDetail>
+ * Contains dictionary details, page index and the word reference.
+ */
 public class WordDetail {
     private String word;
     private DictionaryDetail dictionaryDetail;

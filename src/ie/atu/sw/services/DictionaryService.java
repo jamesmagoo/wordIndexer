@@ -1,4 +1,4 @@
-package ie.atu.sw.utils;
+package ie.atu.sw.services;
 
 import ie.atu.sw.model.DictionaryDetail;
 import ie.atu.sw.model.WordDetail;
@@ -14,24 +14,19 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * Class for utilities related to word resources such as lists of words
  * to be omitted, and dictionary definitions of words.
  */
-public class DictionaryUtils {
+public class DictionaryService {
     private static Set<String> forbiddenWords = new ConcurrentSkipListSet<>();
     private static Map<String, DictionaryDetail> dictionary = new ConcurrentSkipListMap<>();
     private String dictionaryPath;
     private String forbiddenWordsPath;
 
-
-    /**
-     * Gets the forbidden words list as loaded by the user
-     *
-     * @return the Set of forbidden words
-     */
     public Set<String> getForbiddenWords() {
         return forbiddenWords;
     }
 
     /**
      * Loads a list of forbidden words from a provided file.
+     * These words will not be included in any word indexing.
      *
      * @throws Exception if the file cannot be found at the given path.
      */
@@ -51,7 +46,7 @@ public class DictionaryUtils {
     }
 
     /**
-     * Loads dictionary file into Set
+     * Loads dictionary file into Set for reference in indexing.
      *
      * @throws Exception if the file cannot be found at the given path.
      */
@@ -70,8 +65,14 @@ public class DictionaryUtils {
                 }));
     }
 
+    /**
+     * Parses a dictionary line to extract and add to list.
+     * 1. the word
+     * 2. the word type
+     * 3. definition(s)
+     * @param dictionaryLine
+     */
     private void processDictionaryLine(String dictionaryLine) {
-
         // Split the line on the semicolon character to get the individual definitions
         String[] definitions = dictionaryLine.split(";");
 

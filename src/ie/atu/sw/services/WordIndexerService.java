@@ -1,7 +1,6 @@
 package ie.atu.sw.services;
 
 import ie.atu.sw.model.WordDetail;
-import ie.atu.sw.utils.DictionaryUtils;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -19,10 +18,10 @@ public class WordIndexerService {
     private String inputFilePath;
     private String outputFilePath;
 
-    DictionaryUtils dictionaryUtils;
+    DictionaryService dictionaryService;
 
     public WordIndexerService() throws Exception {
-        this.dictionaryUtils = new DictionaryUtils();
+        this.dictionaryService = new DictionaryService();
     }
 
     /**
@@ -97,7 +96,7 @@ public class WordIndexerService {
      */
     private void addWordToIndex(String word) throws Exception {
         List<Integer> pageNumbersList;
-        if(dictionaryUtils.getForbiddenWords().contains(word)){
+        if(dictionaryService.getForbiddenWords().contains(word)){
             return;
         }
         WordDetail wordDetail;
@@ -113,7 +112,7 @@ public class WordIndexerService {
             pageNumbersList = new ArrayList<>();
             int page = calculatePageNumber(lineNumber);
             pageNumbersList.add(page);
-            dictionaryUtils.setDictionaryDefinition(word, wordDetail);
+            dictionaryService.setDictionaryDefinition(word, wordDetail);
         }
         wordDetail.setPageNumbersList(pageNumbersList);
         wordDetailIndex.put(word, wordDetail);

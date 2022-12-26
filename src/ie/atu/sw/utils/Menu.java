@@ -1,7 +1,7 @@
 package ie.atu.sw.utils;
 
+import ie.atu.sw.services.DictionaryService;
 import ie.atu.sw.services.WordIndexerService;
-import ie.atu.sw.utils.ConsoleColour;
 
 import java.util.Scanner;
 
@@ -9,12 +9,12 @@ public class Menu {
 
     private Scanner s;
     private WordIndexerService wordIndexerService;
-    private DictionaryUtils dictionaryUtils;
+    private DictionaryService dictionaryService;
     private boolean keepRunning = true;
 
     public Menu() throws Exception {
         s = new Scanner(System.in);
-        dictionaryUtils = new DictionaryUtils();
+        dictionaryService = new DictionaryService();
         wordIndexerService = new WordIndexerService();
     }
 
@@ -46,8 +46,8 @@ public class Menu {
                     System.out.println(ConsoleColour.PURPLE_BOLD);
                     System.out.println("Enter the dictionary file path:");
                     String dictionaryInput = s.next();
-                    dictionaryUtils.setDictionaryPath(dictionaryInput);
-                    dictionaryUtils.loadDictionary();
+                    dictionaryService.setDictionaryPath(dictionaryInput);
+                    dictionaryService.loadDictionary();
                     System.out.print("Select Option [1-6]>");
                     System.out.println();
                     showOptions();
@@ -58,8 +58,8 @@ public class Menu {
                     System.out.println("Set forbidden Words Path:");
                     String forbiddenWordsPath = s.next();
                     if (forbiddenWordsPath != null) {
-                        dictionaryUtils.setForbiddenWordsPath(forbiddenWordsPath);
-                        dictionaryUtils.loadForbiddenWords();
+                        dictionaryService.setForbiddenWordsPath(forbiddenWordsPath);
+                        dictionaryService.loadForbiddenWords();
                         System.out.print("Select Option [1-6]>");
                         System.out.println();
                         showOptions();
@@ -81,6 +81,7 @@ public class Menu {
 
                 } else if (choice == 5) {
                     try {
+                        displayLoading();
                         if (wordIndexerService.indexFile() == true) {
                             System.out.println("Success, please see output file saved in folder.");
                         } else {
@@ -106,7 +107,7 @@ public class Menu {
                 }
 
             } catch (Exception e) {
-                System.out.println("Please enter a number between 1 & 5 only. No characters.");
+                System.out.println("Please enter a number between 1 & 6 only. No characters.");
             }
         }
     }
@@ -136,6 +137,12 @@ public class Menu {
         System.out.println();
     }
 
+
+    /**
+     * Loading bar logic
+     * @param index
+     * @param total
+     */
     public static void printProgress(int index, int total) {
         if (index > total) return;    //Out of range
         int size = 50;                //Must be less than console width
@@ -170,6 +177,10 @@ public class Menu {
         if (done == total) System.out.println("\n");
     }
 
+    /**
+     * Displays loading bar
+     * @throws InterruptedException
+     */
     public void displayLoading() throws InterruptedException {
         System.out.print(ConsoleColour.YELLOW);    //Change the colour of the console text
         int size = 100;                            //The size of the meter. 100 equates to 100%
