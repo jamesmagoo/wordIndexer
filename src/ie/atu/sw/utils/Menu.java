@@ -20,7 +20,7 @@ public class Menu {
 
 
     /**
-     * Method to start the console menu and handles user inputs
+     * Method to start the console menu and handle user inputs
      *
      * @throws InterruptedException
      */
@@ -36,8 +36,9 @@ public class Menu {
                     String inputPath = s.next();
                     if (inputPath != null) {
                         wordIndexerService.setInputFilePath(inputPath);
-                        System.out.print("Select Option [1-5]>");
+                        System.out.print("Select Option [1-6]>");
                         System.out.println();
+                        showOptions();
                     } else {
                         System.out.println("Error");
                     }
@@ -47,8 +48,9 @@ public class Menu {
                     String dictionaryInput = s.next();
                     dictionaryUtils.setDictionaryPath(dictionaryInput);
                     dictionaryUtils.loadDictionary();
-                    System.out.print("Select Option [1-5]>");
+                    System.out.print("Select Option [1-6]>");
                     System.out.println();
+                    showOptions();
 
 
                 } else if (choice == 3) {
@@ -58,8 +60,9 @@ public class Menu {
                     if (forbiddenWordsPath != null) {
                         dictionaryUtils.setForbiddenWordsPath(forbiddenWordsPath);
                         dictionaryUtils.loadForbiddenWords();
-                        System.out.print("Select Option [1-5]>");
+                        System.out.print("Select Option [1-6]>");
                         System.out.println();
+                        showOptions();
                     } else {
                         System.out.println("Error");
                     }
@@ -69,16 +72,26 @@ public class Menu {
                     String outputPath = s.next();
                     if (outputPath != null) {
                         wordIndexerService.setOutputFilePath(outputPath);
-                        System.out.print("Select Option [1-5]>");
+                        System.out.print("Select Option [1-6]>");
                         System.out.println();
+                        showOptions();
                     } else {
                         System.out.println("Error");
                     }
 
                 } else if (choice == 5) {
-                    System.out.println();
-                    displayLoading();
-                    wordIndexerService.indexFile();
+                    try {
+                        if (wordIndexerService.indexFile() == true) {
+                            System.out.println("Success, please see output file saved in folder.");
+                        } else {
+                            System.out.println("There was an error, please ensure all inputs were correct");
+                        }
+                        ;
+                    } catch (Exception e) {
+
+                        e.printStackTrace();
+                    }
+                    System.out.print("Select Option [1-6]>");
                     System.out.println();
                 } else if (choice == 6) {
                     System.out.println(ConsoleColour.RED_BRIGHT);
@@ -89,7 +102,7 @@ public class Menu {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     System.out.println("Invalid Choice");
                     System.out.print("Select Option [1-6]>");
-                    System.out.println();
+                    showOptions();
                 }
 
             } catch (Exception e) {
@@ -98,6 +111,10 @@ public class Menu {
         }
     }
 
+    /**
+     * Displays menu layout/UI in console.
+     * @throws InterruptedException
+     */
     private void showOptions() throws InterruptedException {
         System.out.println(ConsoleColour.YELLOW);
         System.out.println("************************************************************");

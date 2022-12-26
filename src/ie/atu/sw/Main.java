@@ -1,6 +1,5 @@
 package ie.atu.sw;
 
-import ie.atu.sw.services.WordIndexerService;
 import ie.atu.sw.utils.Menu;
 
 

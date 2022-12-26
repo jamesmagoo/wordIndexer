@@ -25,9 +25,21 @@ public class WordIndexerService {
         this.dictionaryUtils = new DictionaryUtils();
     }
 
-    public void indexFile() throws Exception {
-        parseFile();
-        writeIndexToFile();
+    /**
+     * Entry method to index the txt file provided.
+     * @return
+     * @throws Exception
+     */
+    public boolean indexFile() throws Exception {
+        if ((inputFilePath != null) && (outputFilePath != null)) {
+            parseFile();
+            writeIndexToFile();
+            return true;
+        } else {
+            System.out.println("ERROR: Input/Output Directory Paths");
+            return false;
+        }
+
     }
 
     private void parseFile() throws Exception {
@@ -126,20 +138,22 @@ public class WordIndexerService {
      * @throws Exception
      */
     private void writeIndexToFile() throws Exception {
-        try (FileWriter fw = new FileWriter(new File(this.outputFilePath))) {
+        try (FileWriter fw = new FileWriter(outputFilePath); BufferedWriter bw = new BufferedWriter(fw)) {
             Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
             for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
-                fw.write(entry.getKey().toUpperCase() + "\n"
+                bw.write(entry.getKey().toUpperCase() + "\n"
                         + "Page Index: "+ entry.getValue().getPageNumbersList() + "\n"
                         + "Occurrence Count: "+ entry.getValue().getPageNumbersList().size() + "\n"
                         + entry.getValue().getDictionaryDetail().getWordType() + "\n");
                 // Print definitions list
                 List<String> defs = entry.getValue().getDictionaryDetail().getWordDefinitions();
                 for (String def: defs) {
-                    fw.write(def + "\n");
+                    bw.write(def + "\n");
                 }
-                fw.write("--------------------------------------------\n");
+                bw.write("--------------------------------------------\n");
             }
+            bw.flush();
+            bw.close();
         } catch (Exception e){
             System.out.println("Caught " + e);
         }

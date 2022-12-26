@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Fix parsing of empty strings, more testing">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Build out basic menu functionality options 1-6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/DictionaryUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Parser.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
       <workItem from="1671886929768" duration="263000" />
       <workItem from="1671887207466" duration="153000" />
       <workItem from="1671887382913" duration="12821000" />
-      <workItem from="1672066241737" duration="5996000" />
+      <workItem from="1672066241737" duration="7611000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -200,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671897715296</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Build out basic menu functionality options 1-6">
+      <created>1672073439813</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672073439813</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +237,8 @@
     <MESSAGE value="Add dictionary definitions to output" />
     <MESSAGE value="Fix for new csv dictionary format" />
     <MESSAGE value="Fix parsing of empty strings, more testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix parsing of empty strings, more testing" />
+    <MESSAGE value="Build out basic menu functionality options 1-6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build out basic menu functionality options 1-6" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
