@@ -11,15 +11,14 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 public class WordIndexerService extends MainThreadParser {
 
-    Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
+    private Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
     private int lineNumber;
     private String inputFilePath;
     private String outputFilePath;
-
-    DictionaryService dictionaryService;
+    private DictionaryService dictionaryService;
 
     public WordIndexerService() throws Exception {
-        this.dictionaryService = new DictionaryService();
+        dictionaryService = new DictionaryService();
     }
 
     /**
@@ -30,7 +29,6 @@ public class WordIndexerService extends MainThreadParser {
     public boolean indexFile() throws Exception {
         if ((inputFilePath != null) && (outputFilePath != null)) {
             super.parseFile(inputFilePath, this::processLine);
-            System.out.println(wordDetailIndex.size());
             writeIndexToFile();
             return true;
         } else {
@@ -39,34 +37,6 @@ public class WordIndexerService extends MainThreadParser {
         }
 
     }
-
-//    @Override
-//    public void parseFile() throws Exception {
-//        if(inputFilePath == null) return;
-//        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)))) {
-//            String line = null;
-//            while ((line = br.readLine()) != null) {
-//                processLine(line);
-//            }
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    @Override
-//    public void parseFile() throws Exception {
-//        if(inputFilePath == null) return;
-//        Files.lines(Path.of(inputFilePath))
-//                .forEach(line -> Thread.startVirtualThread(() -> {
-//                    try {
-//                        processLine(line);
-//                    } catch (Exception e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }));
-//    }
 
     /**
      * Strips line of whitespaces & annotations before adding index

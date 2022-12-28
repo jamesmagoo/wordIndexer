@@ -3,8 +3,6 @@ package ie.atu.sw.services;
 import ie.atu.sw.model.DictionaryDetail;
 import ie.atu.sw.model.WordDetail;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ConcurrentSkipListSet;
