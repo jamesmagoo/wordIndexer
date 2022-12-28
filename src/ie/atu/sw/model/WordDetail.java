@@ -6,6 +6,7 @@ import java.util.List;
  * Forms the value object for the word index map Map<String, WordDetail>
  * Contains dictionary details, page index and the word reference.
  */
+// TODO implement comparable here so WordDetails can be sorted for top 10 feature.
 public class WordDetail {
     private String word;
     private DictionaryDetail dictionaryDetail;

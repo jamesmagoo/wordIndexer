@@ -3,7 +3,6 @@ package ie.atu.sw.services;
 import ie.atu.sw.model.DictionaryDetail;
 import ie.atu.sw.model.WordDetail;
 
-import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -14,55 +13,29 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * Class for utilities related to word resources such as lists of words
  * to be omitted, and dictionary definitions of words.
  */
-public class DictionaryService {
+public class DictionaryService extends VirtualThreadParser{
     private static Set<String> forbiddenWords = new ConcurrentSkipListSet<>();
     private static Map<String, DictionaryDetail> dictionary = new ConcurrentSkipListMap<>();
     private String dictionaryPath;
     private String forbiddenWordsPath;
 
-    public Set<String> getForbiddenWords() {
-        return forbiddenWords;
-    }
-
     /**
-     * Loads a list of forbidden words from a provided file.
+     * Parse & loads forbidden words from a provided file.
      * These words will not be included in any word indexing.
      *
      * @throws Exception if the file cannot be found at the given path.
      */
     public void loadForbiddenWords() throws Exception {
-        if(this.forbiddenWordsPath == null){
-            System.out.println("No forbidden words loaded");
-            return;
-        }
-        Files.lines(Path.of(forbiddenWordsPath))
-                .forEach(line -> Thread.startVirtualThread(() -> {
-                    try {
-                        forbiddenWords.add(line);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }));
+     super.parseFile(forbiddenWordsPath, line -> forbiddenWords.add(line));
     }
 
     /**
-     * Loads dictionary file into Set for reference in indexing.
+     * Parses & loads dictionary file into Set for reference in indexing.
      *
      * @throws Exception if the file cannot be found at the given path.
      */
     public void loadDictionary() throws Exception {
-        if(this.dictionaryPath == null){
-            System.out.println("No dictionary loaded");
-            return;
-        }
-        Files.lines(Path.of(dictionaryPath))
-                .forEach(line -> Thread.startVirtualThread(() -> {
-                    try {
-                        processDictionaryLine(line);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }));
+      super.parseFile(dictionaryPath, this::processDictionaryLine);
     }
 
     /**
@@ -83,8 +56,6 @@ public class DictionaryService {
         String[] splitAgain =  wordDef.split(":");
         String wordType = splitAgain[0];
         String firstDef = splitAgain[1];
-
-
         List<String> defs = new ArrayList<>();
         defs.add(firstDef.trim());
 
@@ -98,26 +69,17 @@ public class DictionaryService {
         dictionary.put(word.toLowerCase(), dictionaryDetail);
     }
 
+
+    /**
+     * Method to set dictionary definitions in the word index.
+     * @param word
+     * @param wordDetail
+     */
     public void setDictionaryDefinition(String word, WordDetail wordDetail){
         if(dictionary.containsKey(word)){
             wordDetail.setDictionaryDetail(dictionary.get(word));
         } else {
             wordDetail.setDictionaryDetail(new DictionaryDetail(Arrays.asList("Definition Not Found"), "No Word Type Found"));
-        }
-    }
-
-    // TODO : figure out how to abstract out this parsing function, it is used in numerous place
-    private void parseFile(String file) throws Exception {
-        System.out.println("Parsing file: " + file);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                forbiddenWords.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -135,5 +97,9 @@ public class DictionaryService {
 
     public String getForbiddenWordsPath() {
         return forbiddenWordsPath;
+    }
+
+    public Set<String> getForbiddenWords() {
+        return forbiddenWords;
     }
 }

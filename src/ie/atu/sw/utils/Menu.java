@@ -18,7 +18,6 @@ public class Menu {
         wordIndexerService = new WordIndexerService();
     }
 
-
     /**
      * Method to start the console menu and handle user inputs
      *
@@ -83,6 +82,7 @@ public class Menu {
                     try {
                         displayLoading();
                         if (wordIndexerService.indexFile() == true) {
+                            System.out.println();
                             System.out.println("Success, please see output file saved in folder.");
                         } else {
                             System.out.println("There was an error, please ensure all inputs were correct");
@@ -99,6 +99,21 @@ public class Menu {
                     System.out.println("Choice 6 selected ");
                     System.out.println("Closing Application..");
                     System.exit(0);
+                }else if (choice == 7) {
+                    System.out.println(ConsoleColour.RED_BRIGHT);
+                    dictionaryService.setDictionaryPath("./dictionary.csv");
+                    dictionaryService.loadDictionary();
+                    dictionaryService.setForbiddenWordsPath("./google-1000.txt");
+                    dictionaryService.loadForbiddenWords();
+                    System.out.println("TESTING ");
+                    wordIndexerService.setInputFilePath("./1984_orwell.txt");
+                    wordIndexerService.setOutputFilePath("testing2.txt");
+                    if (wordIndexerService.indexFile() == true) {
+                        System.out.println();
+                        System.out.println("Success, please see output file saved in folder.");
+                    } else {
+                        System.out.println("There was an error, please ensure all inputs were correct");
+                    }
                 } else {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     System.out.println("Invalid Choice");

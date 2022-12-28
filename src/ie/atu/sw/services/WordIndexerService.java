@@ -3,15 +3,13 @@ package ie.atu.sw.services;
 import ie.atu.sw.model.WordDetail;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-public class WordIndexerService {
+public class WordIndexerService extends MainThreadParser {
 
     Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
     private int lineNumber;
@@ -31,7 +29,8 @@ public class WordIndexerService {
      */
     public boolean indexFile() throws Exception {
         if ((inputFilePath != null) && (outputFilePath != null)) {
-            parseFile();
+            super.parseFile(inputFilePath, this::processLine);
+            System.out.println(wordDetailIndex.size());
             writeIndexToFile();
             return true;
         } else {
@@ -41,31 +40,33 @@ public class WordIndexerService {
 
     }
 
-    private void parseFile() throws Exception {
-        if(inputFilePath == null) return;
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)))) {
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                processLine(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    public void parseFile() throws Exception {
+//        if(inputFilePath == null) return;
+//        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)))) {
+//            String line = null;
+//            while ((line = br.readLine()) != null) {
+//                processLine(line);
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public void parse2(String file) throws Exception {
-        Files.lines(Path.of(file))
-                .forEach(test -> Thread.startVirtualThread(() -> {
-                    try {
-                        System.out.println("Parsing file on virtual thread: " + file);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }));
-    }
-
+//    @Override
+//    public void parseFile() throws Exception {
+//        if(inputFilePath == null) return;
+//        Files.lines(Path.of(inputFilePath))
+//                .forEach(line -> Thread.startVirtualThread(() -> {
+//                    try {
+//                        processLine(line);
+//                    } catch (Exception e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }));
+//    }
 
     /**
      * Strips line of whitespaces & annotations before adding index
@@ -73,7 +74,7 @@ public class WordIndexerService {
      * @param line
      * @throws Exception
      */
-    private void processLine(String line) throws Exception {
+    private void processLine(String line) {
         lineNumber++;
         String regex = "\s"; // split on whitespace
         String[] words = line.split(regex);
@@ -94,7 +95,7 @@ public class WordIndexerService {
      * @param word
      * @throws Exception
      */
-    private void addWordToIndex(String word) throws Exception {
+    private void addWordToIndex(String word) {
         List<Integer> pageNumbersList;
         if(dictionaryService.getForbiddenWords().contains(word)){
             return;
@@ -129,9 +130,6 @@ public class WordIndexerService {
         return (int) Math.ceil(pageNumber);
     }
 
-
-    // TODO : use stringbuilder here
-
     /**
      * Writes the index to the output file
      * @throws Exception
@@ -139,20 +137,22 @@ public class WordIndexerService {
     private void writeIndexToFile() throws Exception {
         try (FileWriter fw = new FileWriter(outputFilePath); BufferedWriter bw = new BufferedWriter(fw)) {
             Map<String, WordDetail> temp = new TreeMap<>(wordDetailIndex); //O(n log n)
-            for (Map.Entry<String, WordDetail> entry : temp.entrySet()) { //O(n)
-                bw.write(entry.getKey().toUpperCase() + "\n"
-                        + "Page Index: "+ entry.getValue().getPageNumbersList() + "\n"
-                        + "Occurrence Count: "+ entry.getValue().getPageNumbersList().size() + "\n"
-                        + entry.getValue().getDictionaryDetail().getWordType() + "\n");
-                // Print definitions list
+            StringBuilder sb = new StringBuilder();
+            for (Map.Entry<String, WordDetail> entry : temp.entrySet()) {
+                sb.append(entry.getKey().toUpperCase()).append("\n");
+                sb.append("Page Index: ").append(entry.getValue().getPageNumbersList()).append("\n");
+                sb.append("Occurrence Count: ").append(entry.getValue().getPageNumbersList().size()).append("\n");
+                sb.append("Word Type: ").append("\n");
+                sb.append(entry.getValue().getDictionaryDetail().getWordType());
+                sb.append("\n\n").append("Definition(s): ").append("\n");
                 List<String> defs = entry.getValue().getDictionaryDetail().getWordDefinitions();
                 for (String def: defs) {
-                    bw.write(def + "\n");
+                    sb.append(def).append("\n");
                 }
-                bw.write("--------------------------------------------\n");
+                sb.append("--------------------------------------------\n");
             }
+            bw.write(sb.toString());
             bw.flush();
-            bw.close();
         } catch (Exception e){
             System.out.println("Caught " + e);
         }
