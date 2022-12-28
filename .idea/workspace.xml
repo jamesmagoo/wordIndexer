@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Refactor with interfaces and parent classes for parsing">
-      <change afterPath="$PROJECT_DIR$/chips" afterDir="false" />
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Refactor and UML draft 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +107,7 @@
       <workItem from="1671887207466" duration="153000" />
       <workItem from="1671887382913" duration="12821000" />
       <workItem from="1672066241737" duration="9419000" />
-      <workItem from="1672236154910" duration="13065000" />
+      <workItem from="1672236154910" duration="19134000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -228,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672241411430</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactor and UML draft 1">
+      <created>1672260436529</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672260436529</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +271,8 @@
     <MESSAGE value="Fixes to menu, error handling" />
     <MESSAGE value="Comments, tweaks" />
     <MESSAGE value="Refactor with interfaces and parent classes for parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor with interfaces and parent classes for parsing" />
+    <MESSAGE value="Refactor and UML draft 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor and UML draft 1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -7,7 +7,7 @@ import java.util.List;
  * Contains dictionary details, page index and the word reference.
  */
 // TODO implement comparable here so WordDetails can be sorted for top 10 feature.
-public class WordDetail {
+public class WordDetail implements Comparable<WordDetail>{
     private String word;
     private DictionaryDetail dictionaryDetail;
     private List<Integer> pageNumbersList;
@@ -34,5 +34,17 @@ public class WordDetail {
 
     public void setDictionaryDetail(DictionaryDetail dictionaryDetail) {
         this.dictionaryDetail = dictionaryDetail;
+    }
+
+    /**
+     * Words are sorted by there frequency of occurrence in the text provided.
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(WordDetail o) {
+        if(this.pageNumbersList.size() > o.pageNumbersList.size()) return -1;
+        if(this.pageNumbersList.size() < o.pageNumbersList.size()) return 1;
+        return 0;
     }
 }

@@ -3,15 +3,13 @@ package ie.atu.sw.services;
 import ie.atu.sw.model.WordDetail;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 public class WordIndexerService extends MainThreadParser {
 
     private Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
+    private List<String> topTenWords = new ArrayList<>();
     private int lineNumber;
     private String inputFilePath;
     private String outputFilePath;
@@ -23,6 +21,7 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Entry method to index the txt file provided.
+     *
      * @return
      * @throws Exception
      */
@@ -62,12 +61,13 @@ public class WordIndexerService extends MainThreadParser {
     /**
      * Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
      * dictionary definition. If it does, adds to page index list.
+     *
      * @param word
      * @throws Exception
      */
     private void addWordToIndex(String word) {
         List<Integer> pageNumbersList;
-        if(dictionaryService.getForbiddenWords().contains(word)){
+        if (dictionaryService.getForbiddenWords().contains(word)) {
             return;
         }
         WordDetail wordDetail;
@@ -86,11 +86,13 @@ public class WordIndexerService extends MainThreadParser {
             dictionaryService.setDictionaryDefinition(word, wordDetail);
         }
         wordDetail.setPageNumbersList(pageNumbersList);
+        wordDetail.setWord(word);
         wordDetailIndex.put(word, wordDetail);
     }
 
     /**
      * Calculates page number for index. A page is assumed to be ~40 lines
+     *
      * @param lineNumber
      * @return pageNumber
      */
@@ -102,6 +104,7 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Writes the index to the output file
+     *
      * @throws Exception
      */
     private void writeIndexToFile() throws Exception {
@@ -116,14 +119,14 @@ public class WordIndexerService extends MainThreadParser {
                 sb.append(entry.getValue().getDictionaryDetail().getWordType());
                 sb.append("\n\n").append("Definition(s): ").append("\n");
                 List<String> defs = entry.getValue().getDictionaryDetail().getWordDefinitions();
-                for (String def: defs) {
+                for (String def : defs) {
                     sb.append(def).append("\n");
                 }
                 sb.append("--------------------------------------------\n");
             }
             bw.write(sb.toString());
             bw.flush();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Caught " + e);
         }
     }
@@ -144,4 +147,37 @@ public class WordIndexerService extends MainThreadParser {
         this.outputFilePath = outputFilePath;
     }
 
+    public boolean processTopTenWords() throws Exception {
+        if(dictionaryService.getForbiddenWords().isEmpty()) return false;
+        if (indexFile()) {
+            List<WordDetail> values = new ArrayList<>(List.copyOf(wordDetailIndex.values()));
+            Collections.sort(values);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 20; i++) {
+                sb.append(i+1).append(": ")
+                        .append(values.get(i).getWord()).append(", occurs ")
+                        .append(values.get(i).getPageNumbersList().size()).append(" times.");
+                topTenWords.add(i, sb.toString());
+                sb = new StringBuilder();
+            }
+            writeTop10File();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void writeTop10File() {
+        try (FileWriter fw = new FileWriter("./top20.txt"); BufferedWriter bw = new BufferedWriter(fw)) {
+            List<String> temp = new ArrayList<>(topTenWords);
+            StringBuilder sb = new StringBuilder();
+            for (String word : temp) {
+                sb.append(word).append("\n");
+            }
+            bw.write(sb.toString());
+            bw.flush();
+        } catch (Exception e) {
+            System.out.println("Caught " + e);
+        }
+    }
 }
