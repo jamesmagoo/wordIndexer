@@ -35,7 +35,7 @@ public class Menu {
                     String inputPath = s.next();
                     if (inputPath != null) {
                         wordIndexerService.setInputFilePath(inputPath);
-                        System.out.print("Select Option [1-7]>");
+                        System.out.print("Select Option [1-8]>");
                         System.out.println();
                         showOptions();
                     } else {
@@ -47,7 +47,7 @@ public class Menu {
                     String dictionaryInput = s.next();
                     dictionaryService.setDictionaryPath(dictionaryInput);
                     dictionaryService.loadDictionary();
-                    System.out.print("Select Option [1-7]>");
+                    System.out.print("Select Option [1-8]>");
                     System.out.println();
                     showOptions();
                 } else if (choice == 3) {
@@ -57,7 +57,7 @@ public class Menu {
                     if (forbiddenWordsPath != null) {
                         dictionaryService.setForbiddenWordsPath(forbiddenWordsPath);
                         dictionaryService.loadForbiddenWords();
-                        System.out.print("Select Option [1-7]>");
+                        System.out.print("Select Option [1-8]>");
                         System.out.println();
                         showOptions();
                     } else {
@@ -69,7 +69,7 @@ public class Menu {
                     String outputPath = s.next();
                     if (outputPath != null) {
                         wordIndexerService.setOutputFilePath(outputPath);
-                        System.out.print("Select Option [1-7]>");
+                        System.out.print("Select Option [1-8]>");
                         System.out.println();
                         showOptions();
                     } else {
@@ -89,35 +89,50 @@ public class Menu {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    System.out.print("Select Option [1-7]>");
+                    System.out.print("Select Option [1-8]>");
                     System.out.println();
                 } else if (choice == 6) {
-                    try{
-                    System.out.println(ConsoleColour.BLUE_UNDERLINED);
-                    System.out.println("Top 20 Words");
-                    System.out.println(ConsoleColour.YELLOW);
-                    // TODO fix this so it only works when common words is set
-                    if(wordIndexerService.processTopTenWords() == true){
-                        System.out.println(ConsoleColour.GREEN);
-                        System.out.println("Please find txt file outputted called top20.txt");
-                    } else {
-                        System.out.println(ConsoleColour.RED_BRIGHT);
-                        System.out.println("Set input/output and forbidden words files.");
-                    }} catch (Exception e){
+                    try {
+                        System.out.println(ConsoleColour.BLUE_UNDERLINED);
+                        System.out.println("Top 20 Words");
+                        System.out.println(ConsoleColour.YELLOW);
+                        // TODO fix this so it only works when common words is set
+                        if (wordIndexerService.processTopTenWords() == true) {
+                            System.out.println(ConsoleColour.GREEN);
+                            System.out.println("Please find txt file outputted called top20.txt");
+                        } else {
+                            System.out.println(ConsoleColour.RED_BRIGHT);
+                            System.out.println("Set input/output and forbidden words files.");
+                        }
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } else if (choice == 7) {
+                    System.out.println(ConsoleColour.PURPLE_BOLD);
+                    System.out.println("Enter word to search for:");
+                    String searchWord = s.next();
+                    displayLoading();
+                    System.out.println("\n");
+                    if (wordIndexerService.wordSearch(searchWord) == true) {
+                        System.out.println(ConsoleColour.GREEN_BOLD_BRIGHT);
+                        System.out.print("Select Option [1-8]>");
+                        System.out.println();
+                    } else {
+                        System.out.println(ConsoleColour.RED_BRIGHT);
+                    }
+
+                } else if (choice == 8) {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     System.out.println("Closing Application..");
                     System.exit(0);
-                }else if (choice == 8) {
+                } else if (choice == 11) {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     dictionaryService.setDictionaryPath("./dictionary.csv");
                     dictionaryService.loadDictionary();
                     dictionaryService.setForbiddenWordsPath("./google-1000.txt");
                     dictionaryService.loadForbiddenWords();
                     System.out.println("TESTING ");
-                    wordIndexerService.setInputFilePath("./1984_orwell.txt");
+                    wordIndexerService.setInputFilePath("./1984.txt");
                     wordIndexerService.setOutputFilePath("testing2.txt");
                     if (wordIndexerService.indexFile() == true) {
                         System.out.println();
@@ -129,10 +144,9 @@ public class Menu {
                 } else {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     System.out.println("Invalid Choice");
-                    System.out.print("Select Option [1-6]>");
+                    System.out.print("Select Option [1-8]>");
                     showOptions();
                 }
-
             } catch (Exception e) {
                 System.out.println("Please enter a number between 1 & 6 only. No characters.");
             }
@@ -141,6 +155,7 @@ public class Menu {
 
     /**
      * Displays menu layout/UI in console.
+     *
      * @throws InterruptedException
      */
     private void showOptions() throws InterruptedException {
@@ -157,17 +172,19 @@ public class Menu {
         System.out.println("(4) Specify Output File");
         System.out.println("(5) Execute");
         System.out.println("(6) Top 20 Words");
-        System.out.println("(7) Quit");
+        System.out.println("(7) Word Searcher");
+        System.out.println("(8) Quit");
 
         //Output a menu of options and solicit text from the user
         System.out.print(ConsoleColour.BLACK_BOLD_BRIGHT);
-        System.out.print("Select Option [1-7]>");
+        System.out.print("Select Option [1-8]>");
         System.out.println();
     }
 
 
     /**
      * Loading bar logic
+     *
      * @param index
      * @param total
      */
@@ -207,6 +224,7 @@ public class Menu {
 
     /**
      * Displays loading bar
+     *
      * @throws InterruptedException
      */
     public void displayLoading() throws InterruptedException {

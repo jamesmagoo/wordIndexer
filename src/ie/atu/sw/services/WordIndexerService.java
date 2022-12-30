@@ -61,7 +61,7 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
-     * dictionary definition. If word is already indexed, adds page to to page index list.
+     * dictionary definition. If word is already indexed, adds page to the page index list.
      *
      * @param word
      * @throws Exception
@@ -182,6 +182,31 @@ public class WordIndexerService extends MainThreadParser {
             bw.flush();
         } catch (Exception e) {
             System.out.println("Caught " + e);
+        }
+    }
+
+    // TODO add to UML diagram, javadoc & abstract?
+    public boolean wordSearch(String searchWord) throws Exception {
+        if(dictionaryService.getForbiddenWords().isEmpty()) return false;
+        if (indexFile()) {
+            if(dictionaryService.getForbiddenWords().contains(searchWord)){
+                System.out.println("This word is a common word and is not indexed.");
+                return true;
+            }
+            if(wordDetailIndex.containsKey(searchWord.toLowerCase())){
+                String foundWord = wordDetailIndex.get(searchWord).getWord();
+                List<Integer> pageList = wordDetailIndex.get(searchWord).getPageNumbersList();
+                System.out.println(foundWord + " is in the file.\n");
+                System.out.println("Occurs on page(s): " + pageList + ".\n");
+                System.out.println("Occurrence Count: " + pageList.size() + ".\n");
+                return true;
+            } else {
+                System.out.println(searchWord + " is not in the file.");
+                return false;
+            }
+        } else {
+            System.out.println("Set input/output and forbidden words files.");
+            return false;
         }
     }
 }

@@ -7,11 +7,6 @@
     <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="First draft of README, updating comments etc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/interfaces/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
     </list>
@@ -113,7 +108,7 @@
       <workItem from="1671887382913" duration="12821000" />
       <workItem from="1672066241737" duration="9419000" />
       <workItem from="1672236154910" duration="19897000" />
-      <workItem from="1672415244373" duration="3599000" />
+      <workItem from="1672415244373" duration="6129000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -248,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672268134642</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="First draft of README, updating comments etc.">
+      <created>1672418857330</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1672418857330</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -32,21 +32,21 @@ This is the service class who's primary function is to index words, as follows:
 2. It first processes the file by stripping whitespace & annotations from each word in a line in `processLine(String line)` method.
 3. This word is then passed to `addWordToIndex(String word)` which contains all the logic to either add to an index or make a new entry to the `wordDetailIndex` Map which contains the index state.
 4. This method uses the `DictionaryService` class methods to pull information on forbidden words & dictionary definitions. 
-
+***
 ### DictionaryService.java
 The primary function of DictionaryService is to parse and save provided dictionaries and forbidden words lists for use by the indexing service.
 - This service avails of Virtual Threads to parse text files, extending the `VirtualThreadParser.java` class.
 - Forbidden words are parsed and saved to state in the `forbiddenWords` set. 
 - Dictionary words & their definitions are parsed and saved in the `Map<String, DictionaryDetail> dictionary` map.
-
+***
 ### WordDetail.java
 - This class describes a word detail object and is the **value** in the main `wordDetailIndex` map i.e. `Map<String, WordDetail>`.
 - This class implements `Comparable` to allow words to be sorted for the Top 20 Words Feature.
 - This class contains the list of pages, the word and a `DictionaryDetail` field related to that word. 
-
+***
 ### DictionaryDetail.java
 Object to store dictionary definitions & word type for a given word, used in the `dictionary` Map in `DictionaryService`
-
+***
 ### Parser.java
 This interface describes the parsing functionality of the application.
 ***
