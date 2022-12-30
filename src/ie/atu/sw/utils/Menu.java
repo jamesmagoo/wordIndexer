@@ -79,7 +79,7 @@ public class Menu {
                 } else if (choice == 5) {
                     try {
                         displayLoading();
-                        if (wordIndexerService.indexFile() == true) {
+                        if (wordIndexerService.indexFile()) {
                             System.out.println();
                             System.out.println("Success, please see output file saved in folder.");
                         } else {
@@ -97,7 +97,7 @@ public class Menu {
                         System.out.println("Top 20 Words");
                         System.out.println(ConsoleColour.YELLOW);
                         // TODO fix this so it only works when common words is set
-                        if (wordIndexerService.processTopTenWords() == true) {
+                        if (wordIndexerService.processTop20Words() == true) {
                             System.out.println(ConsoleColour.GREEN);
                             System.out.println("Please find txt file outputted called top20.txt");
                         } else {
@@ -113,7 +113,7 @@ public class Menu {
                     String searchWord = s.next();
                     displayLoading();
                     System.out.println("\n");
-                    if (wordIndexerService.wordSearch(searchWord) == true) {
+                    if (wordIndexerService.searchWordIndex(searchWord) == true) {
                         System.out.println(ConsoleColour.GREEN_BOLD_BRIGHT);
                         System.out.print("Select Option [1-8]>");
                         System.out.println();

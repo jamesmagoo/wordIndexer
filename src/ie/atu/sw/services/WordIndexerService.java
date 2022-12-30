@@ -11,7 +11,7 @@ public class WordIndexerService extends MainThreadParser {
     private Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
 
     // TODO add to UML diagram
-    private List<String> topTenWords = new ArrayList<>();
+    private List<String> topTwentyWords = new ArrayList<>();
     private int lineNumber;
     private String inputFilePath;
     private String outputFilePath;
@@ -149,7 +149,15 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     // TODO add to UML diagram, javadoc & abstract?
-    public boolean processTopTenWords() throws Exception {
+
+    /**
+     * EXTRA FEATURE
+     * This method calculates the top 20 words in the index, sorting
+     * by frequency of occurrence.
+     * @return success or fail - if required files are loaded or not.
+     * @throws Exception
+     */
+    public boolean processTop20Words() throws Exception {
         if(dictionaryService.getForbiddenWords().isEmpty()) return false;
         if (indexFile()) {
             List<WordDetail> values = new ArrayList<>(List.copyOf(wordDetailIndex.values()));
@@ -159,21 +167,24 @@ public class WordIndexerService extends MainThreadParser {
                 sb.append(i+1).append(": ")
                         .append(values.get(i).getWord()).append(", occurs ")
                         .append(values.get(i).getPageNumbersList().size()).append(" times.");
-                topTenWords.add(i, sb.toString());
+                topTwentyWords.add(i, sb.toString());
                 sb = new StringBuilder();
             }
-            writeTop10File();
+            writeTop20File();
             return true;
         } else {
             return false;
         }
     }
 
-
     // TODO add to UML diagram
-    private void writeTop10File() {
+
+    /**
+     * Writes the top 20 words to an output file.
+     */
+    private void writeTop20File() {
         try (FileWriter fw = new FileWriter("./top20.txt"); BufferedWriter bw = new BufferedWriter(fw)) {
-            List<String> temp = new ArrayList<>(topTenWords);
+            List<String> temp = new ArrayList<>(topTwentyWords);
             StringBuilder sb = new StringBuilder();
             for (String word : temp) {
                 sb.append(word).append("\n");
@@ -186,11 +197,20 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     // TODO add to UML diagram, javadoc & abstract?
-    public boolean wordSearch(String searchWord) throws Exception {
+
+    /**
+     * EXTRA FEATURE
+     * This method searches the index for a specific word and outputs
+     * if it is in the file to the console.
+     * @param searchWord
+     * @return boolean - success or fail of word search
+     * @throws Exception
+     */
+    public boolean searchWordIndex(String searchWord) throws Exception {
         if(dictionaryService.getForbiddenWords().isEmpty()) return false;
         if (indexFile()) {
             if(dictionaryService.getForbiddenWords().contains(searchWord)){
-                System.out.println("This word is a common word and is not indexed.");
+                System.out.println("This is a common word and is not indexed.");
                 return true;
             }
             if(wordDetailIndex.containsKey(searchWord.toLowerCase())){

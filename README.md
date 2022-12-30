@@ -32,6 +32,7 @@ This is the service class who's primary function is to index words, as follows:
 2. It first processes the file by stripping whitespace & annotations from each word in a line in `processLine(String line)` method.
 3. This word is then passed to `addWordToIndex(String word)` which contains all the logic to either add to an index or make a new entry to the `wordDetailIndex` Map which contains the index state.
 4. This method uses the `DictionaryService` class methods to pull information on forbidden words & dictionary definitions. 
+5. Extra features are also implemented here - `processTop20Words()` & `searchWordIndex()` methods. 
 ***
 ### DictionaryService.java
 The primary function of DictionaryService is to parse and save provided dictionaries and forbidden words lists for use by the indexing service.
