@@ -70,6 +70,7 @@ public class DictionaryService extends VirtualThreadParser{
 
     /**
      * Method to set dictionary definitions in the word index.
+     * This connects the dictionary information to the indexed words.
      * @param word
      * @param wordDetail
      */

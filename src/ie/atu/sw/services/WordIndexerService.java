@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public class WordIndexerService extends MainThreadParser {
 
     private Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
+
+    // TODO add to UML diagram
     private List<String> topTenWords = new ArrayList<>();
     private int lineNumber;
     private String inputFilePath;
@@ -34,7 +36,6 @@ public class WordIndexerService extends MainThreadParser {
             System.out.println("ERROR: Input/Output Directory Paths");
             return false;
         }
-
     }
 
     /**
@@ -60,7 +61,7 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
-     * dictionary definition. If it does, adds to page index list.
+     * dictionary definition. If word is already indexed, adds page to to page index list.
      *
      * @param word
      * @throws Exception
@@ -78,7 +79,7 @@ public class WordIndexerService extends MainThreadParser {
             int page = calculatePageNumber(lineNumber);
             pageNumbersList.add(page);
         } else {
-            // word not in index, make list
+            // word not in index, make new WordDetail object & list of pages
             wordDetail = new WordDetail();
             pageNumbersList = new ArrayList<>();
             int page = calculatePageNumber(lineNumber);
@@ -147,6 +148,7 @@ public class WordIndexerService extends MainThreadParser {
         this.outputFilePath = outputFilePath;
     }
 
+    // TODO add to UML diagram, javadoc & abstract?
     public boolean processTopTenWords() throws Exception {
         if(dictionaryService.getForbiddenWords().isEmpty()) return false;
         if (indexFile()) {
@@ -167,6 +169,8 @@ public class WordIndexerService extends MainThreadParser {
         }
     }
 
+
+    // TODO add to UML diagram
     private void writeTop10File() {
         try (FileWriter fw = new FileWriter("./top20.txt"); BufferedWriter bw = new BufferedWriter(fw)) {
             List<String> temp = new ArrayList<>(topTenWords);

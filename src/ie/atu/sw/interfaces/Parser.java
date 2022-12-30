@@ -1,4 +1,4 @@
-package ie.atu.sw.services;
+package ie.atu.sw.interfaces;
 
 import java.util.function.Consumer;
 

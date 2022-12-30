@@ -96,6 +96,7 @@ public class Menu {
                     System.out.println(ConsoleColour.BLUE_UNDERLINED);
                     System.out.println("Top 20 Words");
                     System.out.println(ConsoleColour.YELLOW);
+                    // TODO fix this so it only works when common words is set
                     if(wordIndexerService.processTopTenWords() == true){
                         System.out.println(ConsoleColour.GREEN);
                         System.out.println("Please find txt file outputted called top20.txt");

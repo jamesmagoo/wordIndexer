@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Refactor and UML draft 1">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="First draft of README, updating comments etc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/interfaces/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
     </list>
@@ -37,18 +42,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/jamesmcgauran/Developer/wordIndexer",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jamesmcgauran/Developer/wordIndexer&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ie/atu/sw" />
@@ -72,7 +77,7 @@
       <option name="VM_PARAMETERS" value="--enable-preview" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ie.atu.sw.services.*" />
+          <option name="PATTERN" value="ie.atu.sw.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -107,7 +112,8 @@
       <workItem from="1671887207466" duration="153000" />
       <workItem from="1671887382913" duration="12821000" />
       <workItem from="1672066241737" duration="9419000" />
-      <workItem from="1672236154910" duration="19134000" />
+      <workItem from="1672236154910" duration="19897000" />
+      <workItem from="1672415244373" duration="3599000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -235,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672260436529</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add top 20 words feature">
+      <created>1672268134642</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672268134642</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +285,9 @@
     <MESSAGE value="Comments, tweaks" />
     <MESSAGE value="Refactor with interfaces and parent classes for parsing" />
     <MESSAGE value="Refactor and UML draft 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor and UML draft 1" />
+    <MESSAGE value="Add top 20 words feature" />
+    <MESSAGE value="First draft of README, updating comments etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="First draft of README, updating comments etc." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

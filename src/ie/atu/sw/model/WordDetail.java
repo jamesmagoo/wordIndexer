@@ -5,8 +5,8 @@ import java.util.List;
 /**
  * Forms the value object for the word index map Map<String, WordDetail>
  * Contains dictionary details, page index and the word reference.
+ * Implements Comparable to allow for sorting of words by their frequency of occurrence.
  */
-// TODO implement comparable here so WordDetails can be sorted for top 10 feature.
 public class WordDetail implements Comparable<WordDetail>{
     private String word;
     private DictionaryDetail dictionaryDetail;
@@ -39,7 +39,7 @@ public class WordDetail implements Comparable<WordDetail>{
     /**
      * Words are sorted by there frequency of occurrence in the text provided.
      * @param o the object to be compared.
-     * @return
+     * @return int - 0 if same, 1 if greater, -1 if less
      */
     @Override
     public int compareTo(WordDetail o) {
