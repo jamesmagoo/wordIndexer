@@ -8,7 +8,12 @@ import java.util.function.Consumer;
 public class MainThreadParser implements Parser {
 
     /**
-     * This is parsing function as specified by the Parser interface.
+     * This is parsing function as specified by the Parser interface. Takes a files and parses
+     * each line passing it to a specified lineProcessor function.
+     *
+     * 'Big O' Time Complexity -> O(n) for while loop
+     * Complexity of passed in lineProcessor may dictate ultimate time complexity of this function.
+     *
      * @param filePath the path of the file to be parsed.
      * @param lineProcessor a provided processing method for each line of the provided file.
      * @throws Exception

@@ -38,6 +38,10 @@ public class WordDetail implements Comparable<WordDetail>{
 
     /**
      * Words are sorted by there frequency of occurrence in the text provided.
+     * This allows the WordDetail objects to be sorted in descending order based on the size of their pageNumbersList.
+     *
+     *'Big O' Time Complexity -> O (1)
+     *
      * @param o the object to be compared.
      * @return int - 0 if same, 1 if greater, -1 if less
      */

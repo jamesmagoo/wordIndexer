@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Add search word feature">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Refactoring, readme , comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +109,7 @@
       <workItem from="1671887382913" duration="12821000" />
       <workItem from="1672066241737" duration="9419000" />
       <workItem from="1672236154910" duration="19897000" />
-      <workItem from="1672415244373" duration="6767000" />
+      <workItem from="1672415244373" duration="9910000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -257,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672421499338</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refactoring, readme , comments">
+      <created>1672422141580</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1672422141580</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +305,8 @@
     <MESSAGE value="Add top 20 words feature" />
     <MESSAGE value="First draft of README, updating comments etc." />
     <MESSAGE value="Add search word feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add search word feature" />
+    <MESSAGE value="Refactoring, readme , comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring, readme , comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

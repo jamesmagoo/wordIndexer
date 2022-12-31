@@ -9,8 +9,6 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public class WordIndexerService extends MainThreadParser {
 
     private Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
-
-    // TODO add to UML diagram
     private List<String> topTwentyWords = new ArrayList<>();
     private int lineNumber;
     private String inputFilePath;
@@ -23,6 +21,8 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Entry method to index the txt file provided.
+     *
+     * 'Big O' Time Complexity -> O log(n)
      *
      * @return
      * @throws Exception
@@ -40,6 +40,8 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Strips line of whitespaces & annotations before adding index
+     *
+     * 'Big O' Time Complexity -> O(n)
      *
      * @param line
      * @throws Exception
@@ -62,6 +64,8 @@ public class WordIndexerService extends MainThreadParser {
     /**
      * Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
      * dictionary definition. If word is already indexed, adds page to the page index list.
+     *
+     * 'Big O' Time Complexity -> O log(n)
      *
      * @param word
      * @throws Exception
@@ -94,6 +98,8 @@ public class WordIndexerService extends MainThreadParser {
     /**
      * Calculates page number for index. A page is assumed to be ~40 lines
      *
+     * 'Big O' Time Complexity -> O(1)
+     *
      * @param lineNumber
      * @return pageNumber
      */
@@ -105,6 +111,8 @@ public class WordIndexerService extends MainThreadParser {
 
     /**
      * Writes the index to the output file
+     *
+     * 'Big O' Time Complexity -> O log(n)
      *
      * @throws Exception
      */
@@ -148,12 +156,13 @@ public class WordIndexerService extends MainThreadParser {
         this.outputFilePath = outputFilePath;
     }
 
-    // TODO add to UML diagram, javadoc & abstract?
-
     /**
      * EXTRA FEATURE
      * This method calculates the top 20 words in the index, sorting
      * by frequency of occurrence.
+     *
+     * 'Big O' Time Complexity -> O nlog(n)
+     *
      * @return success or fail - if required files are loaded or not.
      * @throws Exception
      */
@@ -161,7 +170,7 @@ public class WordIndexerService extends MainThreadParser {
         if(dictionaryService.getForbiddenWords().isEmpty()) return false;
         if (indexFile()) {
             List<WordDetail> values = new ArrayList<>(List.copyOf(wordDetailIndex.values()));
-            Collections.sort(values);
+            Collections.sort(values); //O nlog(n)
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < 20; i++) {
                 sb.append(i+1).append(": ")
@@ -177,10 +186,11 @@ public class WordIndexerService extends MainThreadParser {
         }
     }
 
-    // TODO add to UML diagram
-
     /**
      * Writes the top 20 words to an output file.
+     *
+     * 'Big O' Time Complexity -> O(n)
+     *
      */
     private void writeTop20File() {
         try (FileWriter fw = new FileWriter("./top20.txt"); BufferedWriter bw = new BufferedWriter(fw)) {
@@ -196,12 +206,14 @@ public class WordIndexerService extends MainThreadParser {
         }
     }
 
-    // TODO add to UML diagram, javadoc & abstract?
-
     /**
      * EXTRA FEATURE
      * This method searches the index for a specific word and outputs
      * if it is in the file to the console.
+     *
+     *
+     * 'Big O' Time Complexity -> O log(n)
+     *
      * @param searchWord
      * @return boolean - success or fail of word search
      * @throws Exception

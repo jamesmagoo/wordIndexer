@@ -21,6 +21,8 @@ public class DictionaryService extends VirtualThreadParser{
      * Parse & loads forbidden words from a provided file.
      * These words will not be included in any word indexing.
      *
+     * 'Big O' Time Complexity -> O log(n)
+     *
      * @throws Exception if the file cannot be found at the given path.
      */
     public void loadForbiddenWords() throws Exception {
@@ -41,6 +43,9 @@ public class DictionaryService extends VirtualThreadParser{
      * 1. the word
      * 2. the word type
      * 3. definition(s)
+     *
+     * 'Big O' Time Complexity -> O log(n)
+     *
      * @param dictionaryLine
      */
     private void processDictionaryLine(String dictionaryLine) {
@@ -71,6 +76,9 @@ public class DictionaryService extends VirtualThreadParser{
     /**
      * Method to set dictionary definitions in the word index.
      * This connects the dictionary information to the indexed words.
+     *
+     * 'Big O' Time Complexity -> O log(n)
+     *
      * @param word
      * @param wordDetail
      */
