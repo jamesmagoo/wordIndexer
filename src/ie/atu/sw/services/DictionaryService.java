@@ -46,7 +46,7 @@ public class DictionaryService extends VirtualThreadParser{
      *
      * 'Big O' Time Complexity -> O log(n)
      *
-     * @param dictionaryLine
+     * @param dictionaryLine a line from the dictionary csv file
      */
     private void processDictionaryLine(String dictionaryLine) {
         // Split the line on the semicolon character to get the individual definitions
@@ -79,14 +79,14 @@ public class DictionaryService extends VirtualThreadParser{
      *
      * 'Big O' Time Complexity -> O log(n)
      *
-     * @param word
-     * @param wordDetail
+     * @param word the word i.e. key in the index map
+     * @param wordDetail the wordDetail object to be modified/checked i.e. value in the index map
      */
     public void setDictionaryDefinition(String word, WordDetail wordDetail){
         if(dictionary.containsKey(word)){
             wordDetail.setDictionaryDetail(dictionary.get(word));
         } else {
-            wordDetail.setDictionaryDetail(new DictionaryDetail(Arrays.asList("Definition Not Found"), "No Word Type Found"));
+            wordDetail.setDictionaryDetail(new DictionaryDetail(List.of("Definition Not Found"), "No Word Type Found"));
         }
     }
 

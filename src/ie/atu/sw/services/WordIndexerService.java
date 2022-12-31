@@ -43,7 +43,7 @@ public class WordIndexerService extends MainThreadParser {
      *
      * 'Big O' Time Complexity -> O(n)
      *
-     * @param line
+     * @param line each line from the parsed file
      * @throws Exception
      */
     private void processLine(String line) {
@@ -67,7 +67,7 @@ public class WordIndexerService extends MainThreadParser {
      *
      * 'Big O' Time Complexity -> O log(n)
      *
-     * @param word
+     * @param word each word from the parsed line
      * @throws Exception
      */
     private void addWordToIndex(String word) {
@@ -100,7 +100,7 @@ public class WordIndexerService extends MainThreadParser {
      *
      * 'Big O' Time Complexity -> O(1)
      *
-     * @param lineNumber
+     * @param lineNumber the line number currently being parsed in the file.
      * @return pageNumber
      */
     private int calculatePageNumber(int lineNumber) {
@@ -214,7 +214,7 @@ public class WordIndexerService extends MainThreadParser {
      *
      * 'Big O' Time Complexity -> O log(n)
      *
-     * @param searchWord
+     * @param searchWord the word to be searched for in the index.
      * @return boolean - success or fail of word search
      * @throws Exception
      */
