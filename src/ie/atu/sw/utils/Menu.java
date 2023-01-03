@@ -175,7 +175,7 @@ public class Menu {
      * @param index
      * @param total
      */
-    public static void printProgress(int index, int total) {
+    private static void printProgress(int index, int total) {
         if (index > total) return;    //Out of range
         int size = 50;                //Must be less than console width
         char done = '█';            //Change to whatever you like.
@@ -214,7 +214,7 @@ public class Menu {
      *
      * @throws InterruptedException
      */
-    public void displayLoading() throws InterruptedException {
+    private void displayLoading() throws InterruptedException {
         System.out.print(ConsoleColour.YELLOW);    //Change the colour of the console text
         int size = 100;                            //The size of the meter. 100 equates to 100%
         for (int i = 0; i < size; i++) {        //The loop equates to a sequence of processing steps
