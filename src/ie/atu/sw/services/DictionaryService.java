@@ -25,7 +25,7 @@ public class DictionaryService extends VirtualThreadParser{
     private String forbiddenWordsPath;
 
     /**
-     * Parse & loads forbidden words from a provided file.
+     * Parse and loads forbidden words from a provided file.
      * These words will not be included in any word indexing.
      *
      * <p>'Big O' Time Complexity -> O log(n)</p>
@@ -37,7 +37,7 @@ public class DictionaryService extends VirtualThreadParser{
     }
 
     /**
-     * Parses & loads dictionary file into Set for reference in indexing.
+     * Parses and loads dictionary file into Set for reference in indexing.
      *
      * @throws Exception if the file cannot be found at the given path.
      */

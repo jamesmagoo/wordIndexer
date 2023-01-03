@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 
 
 /**
- *  * Implements a platform thread solution of the Parser interface
+ * Implements a platform thread solution of the Parser interface
  */
 public class MainThreadParser implements Parser {
 

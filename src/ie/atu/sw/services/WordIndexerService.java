@@ -49,7 +49,7 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * <p>Strips line of whitespaces & annotations before adding index</p>
+     * <p>Strips line of whitespaces and annotations before adding index</p>
      *
      * <p>'Big O' Time Complexity -> O(n)</p>
      *
@@ -106,7 +106,7 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * <p>Calculates page number for index. A page is assumed to be ~40 lines</p>
+     * <p>Calculates page number for index. A page is assumed to be approx 40 lines</p>
      *
      * <p>'Big O' Time Complexity -> O(1)</p>
      *
