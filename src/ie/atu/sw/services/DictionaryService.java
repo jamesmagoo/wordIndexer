@@ -10,6 +10,13 @@ import java.util.concurrent.ConcurrentSkipListSet;
 /**
  * Class for utilities related to word resources such as lists of words
  * to be omitted, and dictionary definitions of words.
+ *
+ * The primary function of DictionaryService is to parse and save provided dictionaries and forbidden words lists for use by the indexing service.
+ * <ol>
+ * <li>This service avails of Virtual Threads to parse text files, extending the `VirtualThreadParser.java` class.</li>
+ * <li>Forbidden words are parsed and saved to state in the `forbiddenWords` set. </li>
+ * <li>Dictionary words & their definitions are parsed and saved in the `Map<String, DictionaryDetail> dictionary` map.</li>
+ * </ol>
  */
 public class DictionaryService extends VirtualThreadParser{
     private static Set<String> forbiddenWords = new ConcurrentSkipListSet<>();

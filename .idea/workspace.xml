@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="indexer:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Refactoring, readme , comments">
+    <list default="true" id="83667280-4bb5-478c-b986-8d6098b391ce" name="Changes" comment="Improving javadoc comments">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/indexer_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/interfaces/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/interfaces/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/model/WordDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/DictionaryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/MainThreadParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/VirtualThreadParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/services/WordIndexerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ie/atu/sw/utils/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,18 +53,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jamesmcgauran/Developer/wordIndexer&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/jamesmcgauran/Developer/wordIndexer",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ie/atu/sw" />
@@ -59,7 +78,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ie.atu.sw.Main">
+  <component name="RunManager" selected="Application.Runner">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ie.atu.sw.services.Main" />
       <module name="wordIndexer" />
@@ -67,8 +86,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ie.atu.sw.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ie.atu.sw.Main" />
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ie.atu.sw.Runner" />
       <module name="wordIndexer" />
       <option name="VM_PARAMETERS" value="--enable-preview" />
       <extension name="coverage">
@@ -82,12 +101,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ie.atu.sw.Main" />
+      <item itemvalue="Application.Runner" />
       <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ie.atu.sw.Main" />
+        <item itemvalue="Application.Runner" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -109,7 +128,7 @@
       <workItem from="1671887382913" duration="12821000" />
       <workItem from="1672066241737" duration="9419000" />
       <workItem from="1672236154910" duration="19897000" />
-      <workItem from="1672415244373" duration="9910000" />
+      <workItem from="1672415244373" duration="15378000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670969253242</created>
@@ -265,7 +284,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672422141580</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Add 'Big O' complexities to comments">
+      <created>1672487683024</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1672487683024</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Improving javadoc comments">
+      <created>1672487991100</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672487991100</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +339,9 @@
     <MESSAGE value="First draft of README, updating comments etc." />
     <MESSAGE value="Add search word feature" />
     <MESSAGE value="Refactoring, readme , comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring, readme , comments" />
+    <MESSAGE value="Add 'Big O' complexities to comments" />
+    <MESSAGE value="Improving javadoc comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improving javadoc comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

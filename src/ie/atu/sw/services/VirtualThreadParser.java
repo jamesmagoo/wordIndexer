@@ -6,6 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.function.Consumer;
 
+
+/**
+ * Implements a virtual thread solution of the Parser interface
+ */
 public class VirtualThreadParser implements Parser {
 
     /**

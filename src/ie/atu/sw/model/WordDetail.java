@@ -3,9 +3,14 @@ package ie.atu.sw.model;
 import java.util.List;
 
 /**
- * Forms the value object for the word index map Map<String, WordDetail>
- * Contains dictionary details, page index and the word reference.
- * Implements Comparable to allow for sorting of words by their frequency of occurrence.
+ * Object to describe a word in detail i.e. its dictionary details, and page indices.
+ *
+ * <ol>
+ *     <li>This class describes a word detail object and is the **value** in the main `wordDetailIndex` map i.e. `Map<String, WordDetail>`.</li>
+ *     <li>This class implements `Comparable` to allow words to be sorted for the Top 20 Words Feature.</li>
+ *     <li>This class contains the list of pages, the word and a `DictionaryDetail` field related to that word.</li>
+ * </ol>
+ *
  */
 public class WordDetail implements Comparable<WordDetail>{
     private String word;

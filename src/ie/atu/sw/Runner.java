@@ -4,11 +4,13 @@ import ie.atu.sw.utils.Menu;
 
 
 /**
+ * This class is the entry to the application (containing the main method) and should be run to start it.
+ *
  * @author James McGauran
  * @version 0.01
  *
  */
-public class Main {
+public class Runner {
     public static void main(String[] args) throws Exception {
         Menu m = new Menu();
         m.start();

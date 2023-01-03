@@ -5,6 +5,10 @@ import ie.atu.sw.services.WordIndexerService;
 
 import java.util.Scanner;
 
+
+/**
+ * This class provides the UI to the console for the user to interact and select option as provided in the starter code.
+ */
 public class Menu {
 
     private Scanner s;

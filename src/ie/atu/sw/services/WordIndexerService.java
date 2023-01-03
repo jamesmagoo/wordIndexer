@@ -6,6 +6,16 @@ import java.io.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 
+/**
+ * This is the service class who's primary function is to index words, as follows:
+ * <ol>
+ *     <li>Parses the provided file extending the `MainThreadParser.java` class using it's method `parseFile(String filePath, Consumer processor)` method.</li>
+ *     <li>It first processes the file by stripping whitespace & annotations from each word in a line in `processLine(String line)` method.</li>
+ *     <li>This word is then passed to `addWordToIndex(String word)` which contains all the logic to either add to an index or make a new entry to the `wordDetailIndex` Map which contains the index state.</li>
+ *     <li>This method uses the `DictionaryService` class methods to pull information on forbidden words & dictionary definitions. </li>
+ *     <li>Extra features are also implemented here - `processTop20Words()` & `searchWordIndex()` methods.</li>
+ * </ol>
+ */
 public class WordIndexerService extends MainThreadParser {
 
     private Map<String, WordDetail> wordDetailIndex = new ConcurrentSkipListMap<>();
@@ -20,12 +30,12 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * Entry method to index the txt file provided.
+     * - Entry method to index the txt file provided.
      *
-     * 'Big O' Time Complexity -> O log(n)
+     * - 'Big O' Time Complexity -> O log(n)
      *
-     * @return
-     * @throws Exception
+     * @return -  boolean success or fail
+     * @throws - Exception
      */
     public boolean indexFile() throws Exception {
         if ((inputFilePath != null) && (outputFilePath != null)) {
