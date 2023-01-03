@@ -6,8 +6,8 @@ import java.util.List;
  * Object to describe a word in detail i.e. its dictionary details, and page indices.
  *
  * <ol>
- *     <li>This class describes a word detail object and is the **value** in the main `wordDetailIndex` map i.e. `Map<String, WordDetail>`.</li>
- *     <li>This class implements `Comparable` to allow words to be sorted for the Top 20 Words Feature.</li>
+ *     <li>This class describes a word detail object and is the **value** in the main <code>wordDetailIndex</code> map i.e. <code>Map<String, WordDetail></code>.</li>
+ *     <li>This class implements <code>Comparable</code> to allow words to be sorted for the Top 20 Words Feature.</li>
  *     <li>This class contains the list of pages, the word and a `DictionaryDetail` field related to that word.</li>
  * </ol>
  *

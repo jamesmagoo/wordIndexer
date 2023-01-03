@@ -13,10 +13,10 @@ import java.util.function.Consumer;
 public class VirtualThreadParser implements Parser {
 
     /**
-     * This is parsing function as specified by the Parser interface.
+     * The parsing function as specified by the Parser interface.
      *
-     * 'Big O' Time Complexity -> O(n) for forEach method.
-     * Complexity of passed in lineProcessor may dictate ultimate time complexity of this function.
+     * <p>'Big O' Time Complexity -> O(n) for forEach method.</p>
+     * <p>Complexity of passed in lineProcessor may dictate ultimate time complexity of this function.</p>
      *
      * @param filePath the path of the file to be parsed.
      * @param lineProcessor a provided processing method for each line of the provided file.

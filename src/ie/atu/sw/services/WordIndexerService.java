@@ -7,13 +7,13 @@ import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
- * This is the service class who's primary function is to index words, as follows:
+ * Services primary function is to index words, as follows:
  * <ol>
- *     <li>Parses the provided file extending the `MainThreadParser.java` class using it's method `parseFile(String filePath, Consumer processor)` method.</li>
- *     <li>It first processes the file by stripping whitespace & annotations from each word in a line in `processLine(String line)` method.</li>
- *     <li>This word is then passed to `addWordToIndex(String word)` which contains all the logic to either add to an index or make a new entry to the `wordDetailIndex` Map which contains the index state.</li>
- *     <li>This method uses the `DictionaryService` class methods to pull information on forbidden words & dictionary definitions. </li>
- *     <li>Extra features are also implemented here - `processTop20Words()` & `searchWordIndex()` methods.</li>
+ *     <li>Parses the provided file extending the <code>MainThreadParser.java</code> class using it's method <code>parseFile(String filePath, Consumer processor)</code> method.</li>
+ *     <li>Processes the file by stripping whitespace and annotations from each word in a line in `processLine(String line)` method.</li>
+ *     <li>The word is then passed to `addWordToIndex(String word)` which contains all the logic to either add to an index or make a new entry to the `wordDetailIndex` Map which contains the index state.</li>
+ *     <li>This method uses the `DictionaryService` class methods to pull information on forbidden words and dictionary definitions. </li>
+ *     <li>Extra features are also implemented here - `processTop20Words()` and `searchWordIndex()` methods.</li>
  * </ol>
  */
 public class WordIndexerService extends MainThreadParser {
@@ -30,9 +30,9 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * - Entry method to index the txt file provided.
+     * Entry method to index the txt file provided.
      *
-     * - 'Big O' Time Complexity -> O log(n)
+     * <p>'Big O' Time Complexity -> O log(n)</p>
      *
      * @return -  boolean success or fail
      * @throws - Exception
@@ -49,9 +49,9 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * Strips line of whitespaces & annotations before adding index
+     * <p>Strips line of whitespaces & annotations before adding index</p>
      *
-     * 'Big O' Time Complexity -> O(n)
+     * <p>'Big O' Time Complexity -> O(n)</p>
      *
      * @param line each line from the parsed file
      * @throws Exception
@@ -72,10 +72,10 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
-     * dictionary definition. If word is already indexed, adds page to the page index list.
+     * <p>Checks if word is already indexed & not forbidden. If not ,adds it to list and gets a
+     * dictionary definition. If word is already indexed, adds page to the page index list.</p>
      *
-     * 'Big O' Time Complexity -> O log(n)
+     * <p>'Big O' Time Complexity -> O log(n)</p>
      *
      * @param word each word from the parsed line
      * @throws Exception
@@ -106,9 +106,9 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * Calculates page number for index. A page is assumed to be ~40 lines
+     * <p>Calculates page number for index. A page is assumed to be ~40 lines</p>
      *
-     * 'Big O' Time Complexity -> O(1)
+     * <p>'Big O' Time Complexity -> O(1)</p>
      *
      * @param lineNumber the line number currently being parsed in the file.
      * @return pageNumber
@@ -120,9 +120,9 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * Writes the index to the output file
+     * <p>Writes the index to the output file</p>
      *
-     * 'Big O' Time Complexity -> O log(n)
+     * <p>'Big O' Time Complexity -> O log(n)</p>
      *
      * @throws Exception
      */
@@ -167,11 +167,11 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * EXTRA FEATURE
-     * This method calculates the top 20 words in the index, sorting
-     * by frequency of occurrence.
+     * <strong>EXTRA FEATURE</strong>
+     * <p>Calculates the top 20 words in the index, sorting
+     *      * by frequency of occurrence.</p>
      *
-     * 'Big O' Time Complexity -> O nlog(n)
+     * <p>'Big O' Time Complexity -> O nlog(n)</p>
      *
      * @return success or fail - if required files are loaded or not.
      * @throws Exception
@@ -199,7 +199,7 @@ public class WordIndexerService extends MainThreadParser {
     /**
      * Writes the top 20 words to an output file.
      *
-     * 'Big O' Time Complexity -> O(n)
+     * <p>'Big O' Time Complexity -> O(n)</p>
      *
      */
     private void writeTop20File() {
@@ -217,9 +217,9 @@ public class WordIndexerService extends MainThreadParser {
     }
 
     /**
-     * EXTRA FEATURE
-     * This method searches the index for a specific word and outputs
-     * if it is in the file to the console.
+     * <strong>EXTRA FEATURE</strong>
+     * <p>This method searches the index for a specific word and outputs
+     * if it is in the file to the console.</p>
      *
      *
      * 'Big O' Time Complexity -> O log(n)

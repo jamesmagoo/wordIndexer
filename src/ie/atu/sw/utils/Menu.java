@@ -100,7 +100,6 @@ public class Menu {
                         System.out.println(ConsoleColour.BLUE_UNDERLINED);
                         System.out.println("Top 20 Words");
                         System.out.println(ConsoleColour.YELLOW);
-                        // TODO fix this so it only works when common words is set
                         if (wordIndexerService.processTop20Words() == true) {
                             System.out.println(ConsoleColour.GREEN);
                             System.out.println("Please find txt file outputted called top20.txt");
@@ -129,22 +128,6 @@ public class Menu {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     System.out.println("Closing Application..");
                     System.exit(0);
-                } else if (choice == 11) {
-                    System.out.println(ConsoleColour.RED_BRIGHT);
-                    dictionaryService.setDictionaryPath("./dictionary.csv");
-                    dictionaryService.loadDictionary();
-                    dictionaryService.setForbiddenWordsPath("./google-1000.txt");
-                    dictionaryService.loadForbiddenWords();
-                    System.out.println("TESTING ");
-                    wordIndexerService.setInputFilePath("./1984.txt");
-                    wordIndexerService.setOutputFilePath("testing2.txt");
-                    if (wordIndexerService.indexFile() == true) {
-                        System.out.println();
-                        System.out.println(ConsoleColour.GREEN);
-                        System.out.println("Success, please see output file saved in folder.");
-                    } else {
-                        System.out.println("There was an error, please ensure all inputs were correct");
-                    }
                 } else {
                     System.out.println(ConsoleColour.RED_BRIGHT);
                     System.out.println("Invalid Choice");

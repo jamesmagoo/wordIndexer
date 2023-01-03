@@ -4,7 +4,7 @@ import ie.atu.sw.utils.Menu;
 
 
 /**
- * This class is the entry to the application (containing the main method) and should be run to start it.
+ * Entry to the application (containing the main method) and should be run to start it.
  *
  * @author James McGauran
  * @version 0.01
